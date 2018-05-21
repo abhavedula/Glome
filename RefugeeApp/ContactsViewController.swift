@@ -8,14 +8,32 @@
 
 import UIKit
 
-class ContactsViewController: UIViewController {
+class ContactsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate {
+    
+    @IBOutlet weak var contactsTableView: UITableView!
+    
+    let contacts = ["p1", "p2", "p3"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        contactsTableView.delegate = self
+        contactsTableView.dataSource = self
+        
+        navigationController?.delegate = self
+        
         // Do any additional setup after loading the view.
     }
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return contacts.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = contactsTableView.dequeueReusableCell(withIdentifier: "contactCell")
+        cell?.textLabel?.text = contacts[indexPath.row]
+        return cell!
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
