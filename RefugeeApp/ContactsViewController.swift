@@ -13,6 +13,7 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var contactsTableView: UITableView!
     
     let contacts = ["p1", "p2", "p3"]
+    let languages = ["Arabic", "Dari", "Urdu", "Nepali", "Burmese"]
 
     override func viewDidLoad() {
         super.viewDidLoad()

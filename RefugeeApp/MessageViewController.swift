@@ -12,7 +12,12 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     @IBOutlet weak var messageTableView: UITableView!
     
-    let messages = ["m1", "m2", "m3", "Custom"]
+    var language = "Urdu"
+    
+    let messages = ["Hello! We will not have the after-school program tomorrow due to the early dismissal from school.", "Hello! We will not have the after-school program tomorrow because there is no school.", "Custom"]
+    let arabic = ["اهلاً. لن يقام برنامج ما بعد المدرسة غداً بسبب الخروج المبكر من المدرسة", "اهلاً. لن يقام برنامج ما بعد المدرسة غداً بسبب العطلة من المدرسة غداً"]
+    let urdu = ["Salam! Kal school jaldi band horaha hai, isliye school ke bad koi program nai hai.", "Salam! Kal school band hai, isliye school ke bad koi program nai hai."]
+    
     var selectedMessage = "default"
     
     @IBOutlet weak var customMessageField: UITextView!
@@ -22,6 +27,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         messageTableView.delegate = self
         messageTableView.dataSource = self
+        messageTableView.estimatedRowHeight = 200
         
         navigationController?.delegate = self
         
@@ -51,6 +57,13 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedMessage = messages[indexPath.row]
+        if (selectedMessage != "Custom") {
+            if (language == "Urdu") {
+                selectedMessage = urdu[indexPath.row]
+            } else if (language == "Arabic") {
+                selectedMessage = arabic[indexPath.row]
+            }
+        }
     }
     
     

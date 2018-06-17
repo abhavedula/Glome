@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     
     var message = "default"
     
+    var language = "Urdu"
+    
     @IBOutlet weak var messageField: UILabel!
     
     @IBAction func onPressSend(_ sender: Any) {
@@ -21,7 +23,7 @@ class ViewController: UIViewController {
         let authToken = "d558044c31f041db628941ac481d838c"
 
             let url = "https://api.twilio.com/2010-04-01/Accounts/\(accountSID)/Messages"
-            let parameters = ["From": "+13167124212", "To": "+12153754459", "Body": messageField.text]
+            let parameters = ["From": "+13167124212", "To": "+12153754459", "Body": messageField.text!]
 
             Alamofire.request(url, method: .post, parameters: parameters)
                 .authenticate(user: accountSID, password: authToken)
