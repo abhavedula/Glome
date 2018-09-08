@@ -49,6 +49,11 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
          (viewController as? ViewController)?.recipientNames.append(contacts[selectedIndex])
         (viewController as? ViewController)?.recipientNums.append(number[selectedIndex])
         (viewController as? ViewController)?.languages.append(languages[selectedIndex])
+        (viewController as? ViewController)?.recipientField.text?.append(contacts[selectedIndex] + " ")
+        
+        if ((viewController as? ViewController)?.message != "") {
+            (viewController as? ViewController)?.updateMessageTextField()
+        }
         // Here you pass the to your original view controller
     }
 

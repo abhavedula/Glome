@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     
     var message = ""
     var translations: [String] = []
-    var languages: [String] = []
+    var languages: [String]! = []
     var recipientNames: [String] = []
     var recipientNums: [String] = []
     
@@ -67,9 +67,7 @@ class ViewController: UIViewController {
 //        ref = Database.database().reference(withPath: "messages")
 //        self.ref.child("0").setValue(["English":"Hello! We will not have the after-school program tomorrow due to the early dismissal from school.", "Arabic":"اهلاً. لن يقام برنامج ما بعد المدرسة غداً بسبب الخروج المبكر من المدرسة"])
 //        self.ref.child("1").setValue(["English":"Hello! We will not have the after-school program tomorrow because there is no school.", "Arabic":"اهلاً. لن يقام برنامج ما بعد المدرسة غداً بسبب العطلة من المدرسة غداً"])
-        for recip in recipientNames {
-            recipientField.text?.append(recip)
-        }
+
         
         ref = Database.database().reference(withPath: "messages")
         ref.observeSingleEvent(of: .value) { snapshot in
@@ -79,6 +77,20 @@ class ViewController: UIViewController {
             }
         }
 
+    }
+    
+    func updateMessageTextField() {
+        messageField.text! = ""
+        if (languages.count > 0) {
+            for i in 0...languages.count-1 {
+                var m = message
+                if (languages[i] == "Arabic") {
+                    m = Arabic[message]!
+                }
+                messageField.text!.append(m + "\n")
+            }
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {

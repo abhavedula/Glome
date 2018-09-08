@@ -17,7 +17,6 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     var ref: DatabaseReference!
     
     var messages: [String] = []
-    var arabic: [String] = []
 
 //    let messages = ["Hello! We will not have the after-school program tomorrow due to the early dismissal from school.", "Hello! We will not have the after-school program tomorrow because there is no school.", "Custom"]
 //    let arabic = ["اهلاً. لن يقام برنامج ما بعد المدرسة غداً بسبب الخروج المبكر من المدرسة", "اهلاً. لن يقام برنامج ما بعد المدرسة غداً بسبب العطلة من المدرسة غداً"]
@@ -63,9 +62,12 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
 //
 //            (viewController as? ViewController)?.messageField.text = selectedMessage
 //            print("yo " + selectedMessage)
-//            (viewController as? ViewController)?.originalMessageField.text = messages[selectedMessageIndex]
+            (viewController as? ViewController)?.originalMessageField.text = messages[selectedMessageIndex]
             (viewController as? ViewController)?.message = messages[selectedMessageIndex]
         }
+        
+        (viewController as? ViewController)?.updateMessageTextField()
+        
         // Here you pass the to your original view controller
     }
 
