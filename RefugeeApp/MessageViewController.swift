@@ -7,18 +7,23 @@
 //
 
 import UIKit
+import Foundation
+import FirebaseDatabase
 
 class MessageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate {
 
     @IBOutlet weak var messageTableView: UITableView!
     
-    var language = "Urdu"
+    var ref: DatabaseReference!
     
-    let messages = ["Hello! We will not have the after-school program tomorrow due to the early dismissal from school.", "Hello! We will not have the after-school program tomorrow because there is no school.", "Custom"]
-    let arabic = ["اهلاً. لن يقام برنامج ما بعد المدرسة غداً بسبب الخروج المبكر من المدرسة", "اهلاً. لن يقام برنامج ما بعد المدرسة غداً بسبب العطلة من المدرسة غداً"]
+    var messages: [String] = []
+    var arabic: [String] = []
+
+//    let messages = ["Hello! We will not have the after-school program tomorrow due to the early dismissal from school.", "Hello! We will not have the after-school program tomorrow because there is no school.", "Custom"]
+//    let arabic = ["اهلاً. لن يقام برنامج ما بعد المدرسة غداً بسبب الخروج المبكر من المدرسة", "اهلاً. لن يقام برنامج ما بعد المدرسة غداً بسبب العطلة من المدرسة غداً"]
     let urdu = ["Salam! Kal school jaldi band horaha hai, isliye school ke bad koi program nai hai.", "Salam! Kal school band hai, isliye school ke bad koi program nai hai."]
     
-    var selectedMessage = "default"
+    var selectedMessageIndex = 0
     
     @IBOutlet weak var customMessageField: UITextView!
     
@@ -31,15 +36,35 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         navigationController?.delegate = self
         
+        ref = Database.database().reference(withPath: "messages")
+        ref.observeSingleEvent(of: .value) { snapshot in
+            let enumerator = snapshot.children
+            while let rest = enumerator.nextObject() as? DataSnapshot {
+                self.messages.append((rest.value! as! Dictionary)["English"]!)
+            }
+            self.messageTableView.reloadData()
+        }
+        
         // Do any additional setup after loading the view.
     }
     
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        if (selectedMessage == "Custom") {
+        
+        
+        if (selectedMessageIndex == 2) {
            (viewController as? ViewController)?.messageField.text = customMessageField.text
         } else {
-            (viewController as? ViewController)?.messageField.text = selectedMessage
-            print("yo " + selectedMessage)
+//            let language = (viewController as? ViewController)?.language
+//            if (language == "Urdu") {
+//                selectedMessage = urdu[selectedMessageIndex]
+//            } else if (language == "Arabic") {
+//                selectedMessage = arabic[selectedMessageIndex]
+//            }
+//
+//            (viewController as? ViewController)?.messageField.text = selectedMessage
+//            print("yo " + selectedMessage)
+//            (viewController as? ViewController)?.originalMessageField.text = messages[selectedMessageIndex]
+            (viewController as? ViewController)?.message = messages[selectedMessageIndex]
         }
         // Here you pass the to your original view controller
     }
@@ -56,14 +81,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedMessage = messages[indexPath.row]
-        if (selectedMessage != "Custom") {
-            if (language == "Urdu") {
-                selectedMessage = urdu[indexPath.row]
-            } else if (language == "Arabic") {
-                selectedMessage = arabic[indexPath.row]
-            }
-        }
+        selectedMessageIndex = indexPath.row
     }
     
     

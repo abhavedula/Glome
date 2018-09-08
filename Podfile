@@ -4,4 +4,6 @@ use_frameworks!
 
 target 'RefugeeApp' do
     pod 'Alamofire', '~> 4.7'
+    pod 'Firebase/Core'
+    pod 'Firebase/Database'
 end

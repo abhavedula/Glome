@@ -7,13 +7,20 @@
 //
 
 import UIKit
+import Foundation
+import FirebaseDatabase
 
 class ContactsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate {
     
     @IBOutlet weak var contactsTableView: UITableView!
     
-    let contacts = ["p1", "p2", "p3"]
-    let languages = ["Arabic", "Dari", "Urdu", "Nepali", "Burmese"]
+    var ref: DatabaseReference!
+    
+    var contacts: [String] = []
+    var languages: [String] = []
+    var number: [String] = []
+    
+    var selectedIndex = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +30,28 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
         
         navigationController?.delegate = self
         
+        ref = Database.database().reference(withPath: "contacts")
+        ref.observeSingleEvent(of: .value) { snapshot in
+            let enumerator = snapshot.children
+            while let rest = enumerator.nextObject() as? DataSnapshot {
+                self.contacts.append((rest.value! as! Dictionary)["name"]!)
+                self.languages.append((rest.value! as! Dictionary)["lang"]!)
+                self.number.append((rest.value! as! Dictionary)["number"]!)
+            }
+            self.contactsTableView.reloadData()
+        }
+        
+        
         // Do any additional setup after loading the view.
     }
+    
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+         (viewController as? ViewController)?.recipientNames.append(contacts[selectedIndex])
+        (viewController as? ViewController)?.recipientNums.append(number[selectedIndex])
+        (viewController as? ViewController)?.languages.append(languages[selectedIndex])
+        // Here you pass the to your original view controller
+    }
+
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contacts.count
@@ -35,6 +62,11 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
         cell?.textLabel?.text = contacts[indexPath.row]
         return cell!
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedIndex = indexPath.row
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
