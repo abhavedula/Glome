@@ -16,9 +16,11 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
     
     var ref: DatabaseReference!
     
-    var contacts: [String] = []
-    var languages: [String] = []
-    var number: [String] = []
+//    var contacts: [String] = []
+//    var languages: [String] = []
+//    var number: [String] = []
+    
+    var contacts: [Contact] = []
     
     var selectedIndex = 0
 
@@ -34,9 +36,14 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
         ref.observeSingleEvent(of: .value) { snapshot in
             let enumerator = snapshot.children
             while let rest = enumerator.nextObject() as? DataSnapshot {
-                self.contacts.append((rest.value! as! Dictionary)["name"]!)
-                self.languages.append((rest.value! as! Dictionary)["lang"]!)
-                self.number.append((rest.value! as! Dictionary)["number"]!)
+                var name: String
+                name = (rest.value! as! Dictionary)["name"]!
+                var lang: String
+                lang = (rest.value! as! Dictionary)["lang"]!
+                var num: String
+                num = (rest.value! as! Dictionary)["number"]!
+                let c =  Contact(mName: name, mLanguage: lang, mNumber: num)
+                self.contacts.append(c)
             }
             self.contactsTableView.reloadData()
         }
@@ -46,10 +53,8 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-         (viewController as? ViewController)?.recipientNames.append(contacts[selectedIndex])
-        (viewController as? ViewController)?.recipientNums.append(number[selectedIndex])
-        (viewController as? ViewController)?.languages.append(languages[selectedIndex])
-        (viewController as? ViewController)?.recipientField.text?.append(contacts[selectedIndex] + " ")
+        (viewController as? ViewController)?.recipients.append(contacts[selectedIndex])
+        (viewController as? ViewController)?.recipientField.text?.append(contacts[selectedIndex].getName() + " ")
         
         if ((viewController as? ViewController)?.message != "") {
             (viewController as? ViewController)?.updateMessageTextField()
@@ -64,7 +69,7 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = contactsTableView.dequeueReusableCell(withIdentifier: "contactCell")
-        cell?.textLabel?.text = contacts[indexPath.row]
+        cell?.textLabel?.text = contacts[indexPath.row].getName()
         return cell!
     }
     

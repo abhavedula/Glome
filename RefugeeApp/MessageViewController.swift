@@ -18,10 +18,6 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var messages: [String] = []
 
-//    let messages = ["Hello! We will not have the after-school program tomorrow due to the early dismissal from school.", "Hello! We will not have the after-school program tomorrow because there is no school.", "Custom"]
-//    let arabic = ["اهلاً. لن يقام برنامج ما بعد المدرسة غداً بسبب الخروج المبكر من المدرسة", "اهلاً. لن يقام برنامج ما بعد المدرسة غداً بسبب العطلة من المدرسة غداً"]
-    let urdu = ["Salam! Kal school jaldi band horaha hai, isliye school ke bad koi program nai hai.", "Salam! Kal school band hai, isliye school ke bad koi program nai hai."]
-    
     var selectedMessageIndex = 0
     
     @IBOutlet weak var customMessageField: UITextView!
@@ -50,20 +46,12 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         
         
-        if (selectedMessageIndex == 2) {
+        if (selectedMessageIndex == 5) {
            (viewController as? ViewController)?.messageField.text = customMessageField.text
         } else {
-//            let language = (viewController as? ViewController)?.language
-//            if (language == "Urdu") {
-//                selectedMessage = urdu[selectedMessageIndex]
-//            } else if (language == "Arabic") {
-//                selectedMessage = arabic[selectedMessageIndex]
-//            }
-//
-//            (viewController as? ViewController)?.messageField.text = selectedMessage
-//            print("yo " + selectedMessage)
             (viewController as? ViewController)?.originalMessageField.text = messages[selectedMessageIndex]
             (viewController as? ViewController)?.message = messages[selectedMessageIndex]
+            (viewController as? ViewController)?.messageID = selectedMessageIndex
         }
         
         (viewController as? ViewController)?.updateMessageTextField()
