@@ -25,11 +25,11 @@ class Contact: NSObject {
     }
     
     func getLanguage() -> String {
-        return name
+        return language
     }
     
     func getNumber() -> String {
-        return name
+        return number
     }
 
 }

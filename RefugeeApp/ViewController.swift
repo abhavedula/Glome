@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     var message = ""
     var messageID = 0
     
+    var translations = Dictionary<String, [String]>()
+    
     var recipients: [Contact] = []
     
     var ref: DatabaseReference!
@@ -27,19 +29,23 @@ class ViewController: UIViewController {
     @IBAction func onAddContact(_ sender: Any) {
     }
     
-    func getTranslation(lang: String) -> String {
+    func getTranslation(lang: String) {
         // iterate and save in dictionary
         // index dictionary
-        var messages: [String] = []
-        
+        var msgs: [String] = []
         ref = Database.database().reference(withPath: "messages")
         ref.observeSingleEvent(of: .value) { snapshot in
             let enumerator = snapshot.children
             while let rest = enumerator.nextObject() as? DataSnapshot {
-                messages.append((rest.value! as! Dictionary)[lang]!)
+                var m : String = (rest.value! as! Dictionary)[lang]!
+                if (self.translations[lang] != nil) {
+                    self.translations[lang]!.append(m)
+                } else {
+                    self.translations[lang] = []
+                    self.translations[lang]!.append(m)
+                }
             }
         }
-        return messages[messageID]
     }
     
     @IBAction func onPressSend(_ sender: Any) {
@@ -51,28 +57,8 @@ class ViewController: UIViewController {
         
         for i in 0...recipients.count-1 {
             var m: String = message
-            if (recipients[i].getLanguage() == "Arabic") {
-                m = getTranslation(lang: "Arabic")
-                
-//                ref = Database.database().reference(withPath: "messages")
-//                ref.observeSingleEvent(of: .value) { snapshot in
-//                    let enumerator = snapshot.children
-//                    while let rest = enumerator.nextObject() as? DataSnapshot {
-//                        self.messages.append((rest.value! as! Dictionary)["English"]!)
-//                    }
-//                }
-                
-//                ref = Database.database().reference(withPath: "messages")
-//                m = ref.child(String(messageID)).child("Arabic").observeSingleEvent(of: .value, with: { (snapshot) in
-//
-//                        let dict = snapshot.value as! [String: Any]
-//
-//                        m = dict["Arabic"] as! String
-//                    })
-                
-            } else if (recipients[i].getLanguage() == "French") {
-                m = getTranslation(lang: "French")
-            }
+            
+            m = translations[recipients[i].getLanguage()]![messageID]
             let parameters = ["From": "+17344283890", "To": recipients[i].getNumber(), "Body": m]
 
             Alamofire.request(url, method: .post, parameters: parameters)
@@ -86,23 +72,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getTranslation(lang: "French")
+        getTranslation(lang: "Arabic")
+        print(translations)
         // Do any additional setup after loading the view, typically from a nib.
-//        ref = Database.database().reference(withPath: "contacts")
-//        self.ref.child("Abha Vedula").setValue(["name":"Abha Vedula",
-//                                                "number":"+12153754459",
-//                                                "lang":"Arabic"])
-//        ref = Database.database().reference(withPath: "messages")
-//        self.ref.child("0").setValue(["English":"Hello! We will not have the after-school program tomorrow due to the early dismissal from school.", "Arabic":"اهلاً. لن يقام برنامج ما بعد المدرسة غداً بسبب الخروج المبكر من المدرسة"])
-
-        
-//        ref = Database.database().reference(withPath: "messages")
-//        ref.observeSingleEvent(of: .value) { snapshot in
-//            let enumerator = snapshot.children
-//            while let rest = enumerator.nextObject() as? DataSnapshot {
-//                self.Arabic[(rest.value! as! Dictionary)["English"]!] = (rest.value! as! Dictionary)["Arabic"]!
-//            }
-//        }
-
     }
     
     func updateMessageTextField() {
@@ -110,11 +83,7 @@ class ViewController: UIViewController {
         if (recipients.count > 0) {
             for i in 0...recipients.count-1 {
                 var m = message
-                if (recipients[i].getLanguage() == "Arabic") {
-                    m = getTranslation(lang: "Arabic")
-                } else if (recipients[i].getLanguage() == "French") {
-                    m = getTranslation(lang: "French")
-                }
+                m = translations[recipients[i].getLanguage()]![messageID]
                 messageField.text!.append(m + "\n")
             }
         }
