@@ -25,6 +25,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var messageField: UILabel!
     @IBOutlet weak var originalMessageField: UILabel!
     @IBOutlet weak var recipientField: UILabel!
+    @IBOutlet weak var chooseMsgButton: UIButton!
+    @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var addContactButton: UIButton!
     
     @IBAction func onAddContact(_ sender: Any) {
     }
@@ -75,6 +78,10 @@ class ViewController: UIViewController {
         getTranslation(lang: "French")
         getTranslation(lang: "Arabic")
         print(translations)
+        sendButton.layer.cornerRadius = 5
+        chooseMsgButton.layer.cornerRadius = 5
+        addContactButton.layer.cornerRadius = 5
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
     

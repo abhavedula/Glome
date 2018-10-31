@@ -10,6 +10,11 @@ import UIKit
 import Foundation
 import FirebaseDatabase
 
+class MessageTableViewCell: UITableViewCell {
+   
+    @IBOutlet weak var messageLabel: UILabel!
+}
+
 class MessageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate {
 
     @IBOutlet weak var messageTableView: UITableView!
@@ -65,9 +70,10 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = messageTableView.dequeueReusableCell(withIdentifier: "cell")
-        cell?.textLabel?.text = messages[indexPath.row]
-        return cell!
+        let cell = messageTableView.dequeueReusableCell(withIdentifier: "cell") as! MessageTableViewCell
+        cell.messageLabel?.text = messages[indexPath.row]
+        cell.selectedBackgroundView?.backgroundColor = UIColor(red: 0, green: 145, blue: 147, alpha: 1)
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

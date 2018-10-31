@@ -16,13 +16,9 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
     
     var ref: DatabaseReference!
     
-//    var contacts: [String] = []
-//    var languages: [String] = []
-//    var number: [String] = []
-    
     var contacts: [Contact] = []
     
-    var selectedIndex = 0
+    var checked: [Bool] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +27,14 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
         contactsTableView.dataSource = self
         
         navigationController?.delegate = self
+        
+        contactsTableView.rowHeight = UITableViewAutomaticDimension
+        contactsTableView.estimatedRowHeight = 100
+        
+        contactsTableView.allowsMultipleSelection = true
+        contactsTableView.allowsMultipleSelectionDuringEditing = true
+        contactsTableView.setEditing(true, animated: false)
+
         
         ref = Database.database().reference(withPath: "contacts")
         ref.observeSingleEvent(of: .value) { snapshot in
@@ -44,6 +48,7 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
                 num = (rest.value! as! Dictionary)["number"]!
                 let c =  Contact(mName: name, mLanguage: lang, mNumber: num)
                 self.contacts.append(c)
+                self.checked.append(false)
             }
             self.contactsTableView.reloadData()
         }
@@ -53,8 +58,13 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        (viewController as? ViewController)?.recipients.append(contacts[selectedIndex])
-        (viewController as? ViewController)?.recipientField.text?.append(contacts[selectedIndex].getName() + " ")
+        for (i, element) in checked.enumerated() {
+            if (element) {
+                (viewController as? ViewController)?.recipients.append(contacts[i])
+                (viewController as? ViewController)?.recipientField.text?.append(contacts[i].getName() + " ")
+            }
+        }
+        
         
         if ((viewController as? ViewController)?.message != "") {
             (viewController as? ViewController)?.updateMessageTextField()
@@ -74,7 +84,7 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedIndex = indexPath.row
+        checked[indexPath.row] = !checked[indexPath.row]
     }
     
     override func didReceiveMemoryWarning() {
