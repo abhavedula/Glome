@@ -10,6 +10,15 @@ import UIKit
 import Foundation
 import FirebaseDatabase
 
+class ContactsTableViewCell: UITableViewCell {
+    @IBOutlet weak var contactNameLabel: UILabel!
+    
+    override func layoutSubviews() {
+        super.layoutSubviews() // This is important, don't forget to call the super.layoutSubviews
+    }
+    
+}
+
 class ContactsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate {
     
     @IBOutlet weak var contactsTableView: UITableView!
@@ -78,9 +87,11 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = contactsTableView.dequeueReusableCell(withIdentifier: "contactCell")
-        cell?.textLabel?.text = contacts[indexPath.row].getName()
-        return cell!
+        let cell = contactsTableView.dequeueReusableCell(withIdentifier: "contactCell") as! ContactsTableViewCell
+        cell.contactNameLabel?.text = contacts[indexPath.row].getName()
+        
+        cell.accessoryType = .detailDisclosureButton;
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -92,15 +103,31 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
         // Dispose of any resources that can be recreated.
     }
     
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        
+        // Fetch Item
+        let item = contacts[indexPath.row]
+        
+        
+        // Perform Segue
+       let destVC = ContactDetailViewController()
+        destVC.nameLabel.text = item.getName()
+        destVC.numberLabel.text = item.getNumber()
+        destVC.langLabel.text = item.getLanguage()
+        destVC.performSegue(withIdentifier: "contactDetailSegue", sender: self)
+    }
+    
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        // Get the new view controller using segue.destinationViewController.
+//        // Pass the selected object to the new view controller.
+//        let destVC = segue.destinationViewController as ContactDetailViewController
+//        destVC.nameLabel.text =
+//    }
+    
 
 }
