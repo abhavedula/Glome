@@ -14,10 +14,17 @@ class ContactDetailViewController: UIViewController {
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var langLabel: UILabel!
     
+    var name = ""
+    var number = ""
+    var language = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        nameLabel.text = name
+        numberLabel.text = number
+        langLabel.text = language
     }
     
 

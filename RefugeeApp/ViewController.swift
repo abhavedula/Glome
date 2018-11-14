@@ -20,6 +20,8 @@ class ViewController: UIViewController {
     
     var recipients: [Contact] = []
     
+    var checked: [Bool] = []
+    
     var ref: DatabaseReference!
 
     @IBOutlet weak var messageField: UILabel!
@@ -82,6 +84,15 @@ class ViewController: UIViewController {
         chooseMsgButton.layer.cornerRadius = 5
         addContactButton.layer.cornerRadius = 5
         
+        ref = Database.database().reference(withPath: "contacts")
+        ref.observeSingleEvent(of: .value) { snapshot in
+            let enumerator = snapshot.children
+            while let rest = enumerator.nextObject() as? DataSnapshot {
+                self.checked.append(false)
+            }
+        }
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -100,6 +111,13 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "ChooseContactSegue") {
+            let vc = segue.destination as! ContactsViewController
+            vc.checked = checked
+        }
     }
 
 
