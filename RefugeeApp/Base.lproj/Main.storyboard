@@ -178,7 +178,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WmA-IX-b4T">
-                                <rect key="frame" x="139" y="584" width="97" height="30"/>
+                                <rect key="frame" x="65" y="584" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Add Contact">
@@ -189,6 +189,44 @@
                                     <segue destination="kGg-eN-W3X" kind="show" id="jDZ-eK-Hta"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vU9-yd-34w">
+                                <rect key="frame" x="218" y="584" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Add Group">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onAddGroupPressed:" destination="5Pb-Ok-ghq" eventType="touchUpInside" id="5f3-Xq-0LS"/>
+                                    <action selector="onAddNewContactPressed:" destination="5Pb-Ok-ghq" eventType="touchUpInside" id="Oql-Xf-b9W"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uh0-5T-EoX">
+                                <rect key="frame" x="65" y="584" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="New Group">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onAddGroupPressed:" destination="5Pb-Ok-ghq" eventType="touchUpInside" id="5iw-GX-CdR"/>
+                                    <action selector="onAddNewContactPressed:" destination="5Pb-Ok-ghq" eventType="touchUpInside" id="q5Y-KB-wYH"/>
+                                    <action selector="onNewGroupPressed:" destination="5Pb-Ok-ghq" eventType="touchUpInside" id="X2V-SA-lLu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NUJ-PU-zXT">
+                                <rect key="frame" x="208" y="584" width="118" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Existing Group">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onAddGroupPressed:" destination="5Pb-Ok-ghq" eventType="touchUpInside" id="2j4-hu-u7j"/>
+                                    <action selector="onAddNewContactPressed:" destination="5Pb-Ok-ghq" eventType="touchUpInside" id="OMq-yG-2iM"/>
+                                    <action selector="onExistingGroupPressed:" destination="5Pb-Ok-ghq" eventType="touchUpInside" id="xfW-3s-Vho"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="dce-AA-wb4"/>
@@ -196,7 +234,10 @@
                     <tabBarItem key="tabBarItem" title="Contacts" id="BnY-8h-gKr"/>
                     <connections>
                         <outlet property="addContactButton" destination="WmA-IX-b4T" id="wcU-US-SvJ"/>
+                        <outlet property="addGroupButton" destination="vU9-yd-34w" id="IG8-mj-jmC"/>
                         <outlet property="contactsTableView" destination="qpn-ga-ewt" id="h2f-LI-JCx"/>
+                        <outlet property="existingGroupButton" destination="NUJ-PU-zXT" id="rfi-ix-Mh4"/>
+                        <outlet property="newGroupButton" destination="uh0-5T-EoX" id="Oce-pD-nd1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e4n-k9-w0j" userLabel="First Responder" sceneMemberID="firstResponder"/>

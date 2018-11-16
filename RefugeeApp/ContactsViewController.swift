@@ -35,19 +35,30 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
     var contacts: [Contact] = []
     
     var checked: [Bool] = []
+    var canSelect: Bool = false
 
+    var selectGroup: Bool = false
+    var groupChecked: [Bool] = []
+    
     @IBOutlet weak var addContactButton: UIButton!
+    @IBOutlet weak var addGroupButton: UIButton!
+    @IBOutlet weak var newGroupButton: UIButton!
+    @IBOutlet weak var existingGroupButton: UIButton!
+    
     @IBAction func onAddNewContactPressed(_ sender: Any) {
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        contacts = []
+       
         var i = 0
         ref = Database.database().reference(withPath: "contacts")
         ref.observeSingleEvent(of: .value) { snapshot in
             let enumerator = snapshot.children
             while let rest = enumerator.nextObject() as? DataSnapshot {
+                if (i == 0) {
+                    self.contacts = []
+                }
                 var name: String
                 name = (rest.value! as! Dictionary)["name"]!
                 var lang: String
@@ -57,17 +68,30 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
                 let c =  Contact(mName: name, mLanguage: lang, mNumber: num)
                 self.contacts.append(c)
                 i = i + 1
-                if (self.checked.count < i) {
+                if (self.checked.count < i && self.canSelect) {
                     self.checked.append(false)
                 }
             }
             self.contactsTableView.reloadData()
         }
+        
    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if (canSelect) {
+            addContactButton.isHidden = true
+            addGroupButton.isHidden = true
+        }
+        newGroupButton.isHidden = true
+        existingGroupButton.isHidden = true
+        
+        contacts = []
         addContactButton.layer.cornerRadius = 5
+        addGroupButton.layer.cornerRadius = 5
+        newGroupButton.layer.cornerRadius = 5
+        existingGroupButton.layer.cornerRadius = 5
+        
         contactsTableView.delegate = self
         contactsTableView.dataSource = self
         
@@ -76,12 +100,13 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
         contactsTableView.rowHeight = UITableViewAutomaticDimension
         contactsTableView.estimatedRowHeight = 100
         
-        if (checked.count > 0) {
+        if (canSelect) {
             contactsTableView.allowsMultipleSelection = true
             contactsTableView.allowsMultipleSelectionDuringEditing = true
             contactsTableView.setEditing(true, animated: false)
         }
         
+        if (!canSelect) {
         ref = Database.database().reference(withPath: "contacts")
         ref.observeSingleEvent(of: .value) { snapshot in
             let enumerator = snapshot.children
@@ -96,15 +121,42 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
                 self.contacts.append(c)
             }
             self.contactsTableView.reloadData()
+            }
+            
         }
-        
+     
         
         // Do any additional setup after loading the view.
     }
     
     
+    @IBAction func onAddGroupPressed(_ sender: Any) {
+        contactsTableView.allowsMultipleSelection = true
+        contactsTableView.allowsMultipleSelectionDuringEditing = true
+        contactsTableView.setEditing(true, animated: false)
+        selectGroup = true
+        
+        for (i, element) in contacts.enumerated() {
+            groupChecked.append(false)
+        }
+        
+        addContactButton.isHidden = true
+        addGroupButton.isHidden = true
+        newGroupButton.isHidden = false
+        existingGroupButton.isHidden = false
+        
+        
+    }
+    
+    @IBAction func onNewGroupPressed(_ sender: Any) {
+    }
+    
+    @IBAction func onExistingGroupPressed(_ sender: Any) {
+    }
+    
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         // reset contacts data in main view controller
+      
         (viewController as? ViewController)?.recipients = []
         (viewController as? ViewController)?.recipientField.text? = ""
         
@@ -131,8 +183,9 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = contactsTableView.dequeueReusableCell(withIdentifier: "contactCell") as! ContactsTableViewCell
         cell.contactNameLabel?.text = contacts[indexPath.row].getName()
+        
         if (checked.count > 0) {
-            if (checked[indexPath.row]) {
+            if (checked[indexPath.row] && canSelect) {
                 cell.setSelected(checked[indexPath.row], animated: false)
                 contactsTableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
             }
@@ -141,14 +194,26 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (checked.count > 0) {
-            checked[indexPath.row] = !checked[indexPath.row]
+        if (canSelect) {
+            if (checked.count > 0) {
+                checked[indexPath.row] = !checked[indexPath.row]
+            }
+        } else if (selectGroup) {
+            if (groupChecked.count > 0) {
+                groupChecked[indexPath.row] = !groupChecked[indexPath.row]
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        if (checked.count > 0) {
-            checked[indexPath.row] = !checked[indexPath.row]
+        if (canSelect) {
+            if (checked.count > 0) {
+                checked[indexPath.row] = !checked[indexPath.row]
+            }
+        } else if (selectGroup) {
+            if (groupChecked.count > 0) {
+                groupChecked[indexPath.row] = !groupChecked[indexPath.row]
+            }
         }
     }
     

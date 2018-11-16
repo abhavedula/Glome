@@ -116,6 +116,10 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "ChooseContactSegue") {
             let vc = segue.destination as! ContactsViewController
+            vc.canSelect = true
+            vc.checked = checked
+        } else {
+            let vc = segue.destination as! ContactsViewController
             vc.checked = checked
         }
     }
