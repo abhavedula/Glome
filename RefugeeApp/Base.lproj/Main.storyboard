@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bY2-vq-5RT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bY2-vq-5RT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -58,7 +58,7 @@
                                 </state>
                                 <connections>
                                     <action selector="onAddContact:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FBG-d7-EDf"/>
-                                    <segue destination="5Pb-Ok-ghq" kind="show" identifier="ChooseContactSegue" id="S50-sS-YXE"/>
+                                    <segue destination="5Pb-Ok-ghq" kind="show" identifier="ChooseContactSegue" id="Cei-De-sIq"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16O-aZ-5Hl">
@@ -125,7 +125,7 @@
             </objects>
             <point key="canvasLocation" x="3893.5999999999999" y="133.5832083958021"/>
         </scene>
-        <!--Contacts-->
+        <!--Contacts View Controller-->
         <scene sceneID="0dO-DS-rzP">
             <objects>
                 <viewController id="5Pb-Ok-ghq" customClass="ContactsViewController" customModule="RefugeeApp2" customModuleProvider="target" sceneMemberID="viewController">
@@ -133,9 +133,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qpn-ga-ewt">
-                                <rect key="frame" x="0.0" y="55" width="375" height="521"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qpn-ga-ewt">
+                                <rect key="frame" x="0.0" y="55" width="375" height="482"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="contactCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="contactCell" rowHeight="65" id="4g1-NZ-PQX" customClass="ContactsTableViewCell" customModule="RefugeeApp2" customModuleProvider="target">
@@ -147,15 +146,15 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FtI-yg-oAh">
                                                     <rect key="frame" x="30" y="11" width="237" height="41"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="237" id="WWg-uK-29l"/>
-                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fSc-DZ-dus">
-                                                    <rect key="frame" x="298" y="15" width="30" height="34"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fSc-DZ-dus">
+                                                    <rect key="frame" x="305" y="11" width="30" height="43"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="fzl-uH-Jdt"/>
+                                                    </constraints>
                                                     <state key="normal" title="&gt;"/>
                                                     <connections>
                                                         <segue destination="wh3-4a-JsO" kind="show" identifier="ContactDetailSegue" id="V04-lC-hPD"/>
@@ -163,12 +162,13 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="FtI-yg-oAh" firstAttribute="leading" secondItem="5Js-aV-6YS" secondAttribute="leadingMargin" constant="14" id="9z6-bA-gwx"/>
-                                                <constraint firstItem="FtI-yg-oAh" firstAttribute="top" secondItem="5Js-aV-6YS" secondAttribute="topMargin" id="FN8-AH-dvO"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="fSc-DZ-dus" secondAttribute="bottom" constant="5" id="K41-MW-O1m"/>
-                                                <constraint firstItem="FtI-yg-oAh" firstAttribute="centerY" secondItem="5Js-aV-6YS" secondAttribute="centerY" id="MdJ-hM-L94"/>
-                                                <constraint firstItem="fSc-DZ-dus" firstAttribute="centerY" secondItem="FtI-yg-oAh" secondAttribute="centerY" id="YVg-XF-6gr"/>
-                                                <constraint firstItem="fSc-DZ-dus" firstAttribute="leading" secondItem="FtI-yg-oAh" secondAttribute="trailing" constant="31" id="dig-Yk-eIZ"/>
+                                                <constraint firstItem="FtI-yg-oAh" firstAttribute="leading" secondItem="5Js-aV-6YS" secondAttribute="leadingMargin" constant="15" id="6HH-CH-LkX"/>
+                                                <constraint firstItem="fSc-DZ-dus" firstAttribute="leading" secondItem="FtI-yg-oAh" secondAttribute="trailing" constant="38" id="GZI-aF-nRo"/>
+                                                <constraint firstItem="fSc-DZ-dus" firstAttribute="bottom" secondItem="5Js-aV-6YS" secondAttribute="bottomMargin" id="JtK-xv-ITJ"/>
+                                                <constraint firstItem="FtI-yg-oAh" firstAttribute="centerY" secondItem="5Js-aV-6YS" secondAttribute="centerY" id="dwB-jl-hjZ"/>
+                                                <constraint firstItem="FtI-yg-oAh" firstAttribute="top" secondItem="fSc-DZ-dus" secondAttribute="top" id="hLR-QN-JNj"/>
+                                                <constraint firstItem="FtI-yg-oAh" firstAttribute="top" secondItem="5Js-aV-6YS" secondAttribute="topMargin" id="meE-sL-05n"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="fSc-DZ-dus" secondAttribute="trailing" constant="25" id="zc5-8U-jSE"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -177,11 +177,14 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WmA-IX-b4T">
-                                <rect key="frame" x="65" y="584" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WmA-IX-b4T">
+                                <rect key="frame" x="7" y="545" width="113" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Add Contact">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="113" id="cH0-CW-Scy"/>
+                                    <constraint firstAttribute="height" constant="30" id="hB3-OZ-8MD"/>
+                                </constraints>
+                                <state key="normal" title="New Contact">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -189,11 +192,15 @@
                                     <segue destination="kGg-eN-W3X" kind="show" id="jDZ-eK-Hta"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vU9-yd-34w">
-                                <rect key="frame" x="218" y="584" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vU9-yd-34w">
+                                <rect key="frame" x="265" y="545" width="104" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Add Group">
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="104" id="KSw-vz-TfJ"/>
+                                    <constraint firstAttribute="width" constant="104" id="Mpk-Iw-ubP"/>
+                                    <constraint firstAttribute="height" constant="30" id="jRI-rf-bks"/>
+                                </constraints>
+                                <state key="normal" title="Add to Group">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -201,48 +208,59 @@
                                     <action selector="onAddNewContactPressed:" destination="5Pb-Ok-ghq" eventType="touchUpInside" id="Oql-Xf-b9W"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uh0-5T-EoX">
-                                <rect key="frame" x="65" y="584" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xdk-kD-whg">
+                                <rect key="frame" x="169" y="588" width="37" height="30"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="onDonePressed:" destination="5Pb-Ok-ghq" eventType="touchUpInside" id="N0A-n4-l9z"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yfy-CE-j0M">
+                                <rect key="frame" x="141" y="545" width="105" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="105" id="881-6d-NLo"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="105" id="rPs-DG-fqL"/>
+                                    <constraint firstAttribute="height" constant="30" id="sq8-3G-ncO"/>
+                                </constraints>
                                 <state key="normal" title="New Group">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="onAddGroupPressed:" destination="5Pb-Ok-ghq" eventType="touchUpInside" id="5iw-GX-CdR"/>
-                                    <action selector="onAddNewContactPressed:" destination="5Pb-Ok-ghq" eventType="touchUpInside" id="q5Y-KB-wYH"/>
-                                    <action selector="onNewGroupPressed:" destination="5Pb-Ok-ghq" eventType="touchUpInside" id="X2V-SA-lLu"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NUJ-PU-zXT">
-                                <rect key="frame" x="208" y="584" width="118" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Existing Group">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="onAddGroupPressed:" destination="5Pb-Ok-ghq" eventType="touchUpInside" id="2j4-hu-u7j"/>
-                                    <action selector="onAddNewContactPressed:" destination="5Pb-Ok-ghq" eventType="touchUpInside" id="OMq-yG-2iM"/>
-                                    <action selector="onExistingGroupPressed:" destination="5Pb-Ok-ghq" eventType="touchUpInside" id="xfW-3s-Vho"/>
+                                    <action selector="onNewGroupPressed:" destination="5Pb-Ok-ghq" eventType="touchUpInside" id="huP-7a-OwP"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xdk-kD-whg" firstAttribute="bottom" secondItem="dce-AA-wb4" secondAttribute="bottom" id="08Z-3R-tcZ"/>
+                            <constraint firstItem="Yfy-CE-j0M" firstAttribute="baseline" secondItem="vU9-yd-34w" secondAttribute="baseline" id="1w3-c2-F0c"/>
+                            <constraint firstItem="WmA-IX-b4T" firstAttribute="baseline" secondItem="Yfy-CE-j0M" secondAttribute="baseline" id="8FO-JF-90a"/>
+                            <constraint firstAttribute="trailing" secondItem="qpn-ga-ewt" secondAttribute="trailing" id="Mny-3B-6FF"/>
+                            <constraint firstItem="qpn-ga-ewt" firstAttribute="top" secondItem="TPf-Zz-WUC" secondAttribute="topMargin" constant="-9" id="P9k-vA-fQn"/>
+                            <constraint firstItem="dce-AA-wb4" firstAttribute="trailing" secondItem="vU9-yd-34w" secondAttribute="trailing" constant="6" id="Vqx-KQ-XLX"/>
+                            <constraint firstItem="Yfy-CE-j0M" firstAttribute="leading" secondItem="WmA-IX-b4T" secondAttribute="trailing" constant="21" id="Xi6-42-xNd"/>
+                            <constraint firstItem="vU9-yd-34w" firstAttribute="leading" secondItem="Yfy-CE-j0M" secondAttribute="trailing" constant="19" id="Zuh-R4-AuV"/>
+                            <constraint firstItem="WmA-IX-b4T" firstAttribute="leading" secondItem="dce-AA-wb4" secondAttribute="leading" constant="7" id="erx-zH-EPn"/>
+                            <constraint firstItem="qpn-ga-ewt" firstAttribute="centerX" secondItem="xdk-kD-whg" secondAttribute="centerX" id="ggY-jE-11g"/>
+                            <constraint firstItem="qpn-ga-ewt" firstAttribute="leading" secondItem="TPf-Zz-WUC" secondAttribute="leading" id="h3l-eD-3XQ"/>
+                            <constraint firstItem="xdk-kD-whg" firstAttribute="top" secondItem="Yfy-CE-j0M" secondAttribute="bottom" constant="13" id="id1-BM-ofo"/>
+                            <constraint firstItem="WmA-IX-b4T" firstAttribute="top" secondItem="qpn-ga-ewt" secondAttribute="bottom" constant="8" symbolic="YES" id="l4f-wf-Vw7"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="dce-AA-wb4"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Contacts" id="BnY-8h-gKr"/>
+                    <navigationItem key="navigationItem" id="edL-H0-QCN"/>
                     <connections>
                         <outlet property="addContactButton" destination="WmA-IX-b4T" id="wcU-US-SvJ"/>
                         <outlet property="addGroupButton" destination="vU9-yd-34w" id="IG8-mj-jmC"/>
                         <outlet property="contactsTableView" destination="qpn-ga-ewt" id="h2f-LI-JCx"/>
-                        <outlet property="existingGroupButton" destination="NUJ-PU-zXT" id="rfi-ix-Mh4"/>
-                        <outlet property="newGroupButton" destination="uh0-5T-EoX" id="Oce-pD-nd1"/>
+                        <outlet property="doneButton" destination="xdk-kD-whg" id="DnV-Y4-bJs"/>
+                        <outlet property="newGroupButton" destination="Yfy-CE-j0M" id="i2d-Yp-OwO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e4n-k9-w0j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3216.8000000000002" y="899.10044977511257"/>
+            <point key="canvasLocation" x="4156" y="899.10044977511257"/>
         </scene>
         <!--New Contact View Controller-->
         <scene sceneID="KMa-Gj-lKQ">
@@ -456,7 +474,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="I8v-em-RKP" kind="relationship" relationship="viewControllers" id="2UN-Ci-uDz"/>
-                        <segue destination="5Pb-Ok-ghq" kind="relationship" relationship="viewControllers" id="fjl-64-Vfo"/>
+                        <segue destination="1JG-hj-6QP" kind="relationship" relationship="viewControllers" id="fjl-64-Vfo"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mTK-TJ-QtX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -533,11 +551,30 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eyW-fY-i6j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3976.8000000000002" y="911.69415292353835"/>
+            <point key="canvasLocation" x="4916" y="911.69415292353835"/>
+        </scene>
+        <!--Contacts-->
+        <scene sceneID="DpB-Qk-1j2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1JG-hj-6QP" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Contacts" id="BnY-8h-gKr"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oga-yi-iyW">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5Pb-Ok-ghq" kind="relationship" relationship="rootViewController" id="naf-ML-mje"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vle-Oc-9P7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3216.8000000000002" y="899.10044977511257"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="S50-sS-YXE"/>
+        <segue reference="Cei-De-sIq"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

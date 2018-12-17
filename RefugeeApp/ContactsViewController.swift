@@ -43,7 +43,7 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var addContactButton: UIButton!
     @IBOutlet weak var addGroupButton: UIButton!
     @IBOutlet weak var newGroupButton: UIButton!
-    @IBOutlet weak var existingGroupButton: UIButton!
+    @IBOutlet weak var doneButton: UIButton!
     
     @IBAction func onAddNewContactPressed(_ sender: Any) {
     }
@@ -83,14 +83,12 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
             addContactButton.isHidden = true
             addGroupButton.isHidden = true
         }
-        newGroupButton.isHidden = true
-        existingGroupButton.isHidden = true
+        doneButton.isHidden = true
         
         contacts = []
         addContactButton.layer.cornerRadius = 5
         addGroupButton.layer.cornerRadius = 5
         newGroupButton.layer.cornerRadius = 5
-        existingGroupButton.layer.cornerRadius = 5
         
         contactsTableView.delegate = self
         contactsTableView.dataSource = self
@@ -130,30 +128,62 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     
+    @IBAction func onDonePressed(_ sender: Any) {
+        // Do the actual adding of people to group
+        
+        // Show/hide buttons
+        addContactButton.isHidden = false
+        addGroupButton.isHidden = false
+        newGroupButton.isHidden = false
+        
+        doneButton.isHidden = true
+        
+        // Disable selection
+        contactsTableView.allowsMultipleSelection = false
+        contactsTableView.allowsMultipleSelectionDuringEditing = false
+        contactsTableView.setEditing(false, animated: false)
+        selectGroup = false
+    }
+    
     @IBAction func onAddGroupPressed(_ sender: Any) {
         contactsTableView.allowsMultipleSelection = true
         contactsTableView.allowsMultipleSelectionDuringEditing = true
         contactsTableView.setEditing(true, animated: false)
         selectGroup = true
         
-        for (i, element) in contacts.enumerated() {
+        for (_, _) in contacts.enumerated() {
             groupChecked.append(false)
         }
         
         addContactButton.isHidden = true
         addGroupButton.isHidden = true
-        newGroupButton.isHidden = false
-        existingGroupButton.isHidden = false
-        
+        newGroupButton.isHidden = true
+        doneButton.isHidden = false
         
     }
     
+
     @IBAction func onNewGroupPressed(_ sender: Any) {
+        //1. Create the alert controller.
+        let alert = UIAlertController(title: "Group Name", message: "Enter group name", preferredStyle: .alert)
+        
+        //2. Add the text field. You can configure it however you need.
+        alert.addTextField { (textField) in
+            textField.text = "Group name"
+        }
+        
+        // 3. Grab the value from the text field, and print it when the user clicks OK.
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
+            print("Text field: \(textField!.text)")
+            // Create the group in database
+        }))
+        
+        // 4. Present the alert.
+        self.present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func onExistingGroupPressed(_ sender: Any) {
-    }
-    
+  
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         // reset contacts data in main view controller
       
