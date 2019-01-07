@@ -13,6 +13,8 @@ import FirebaseDatabase
 
 class ViewController: UIViewController {
     
+    var myNumber : String!
+    
     var message = ""
     var messageID = 0
     
@@ -84,7 +86,7 @@ class ViewController: UIViewController {
         chooseMsgButton.layer.cornerRadius = 5
         addContactButton.layer.cornerRadius = 5
         
-        ref = Database.database().reference(withPath: "contacts")
+        ref = Database.database().reference(withPath: "users/" + myNumber + "/contacts")
         ref.observeSingleEvent(of: .value) { snapshot in
             let enumerator = snapshot.children
             while let rest = enumerator.nextObject() as? DataSnapshot {
@@ -92,7 +94,8 @@ class ViewController: UIViewController {
             }
         }
         
-        
+        var contactsTab = (self.tabBarController?.viewControllers![1] as! UINavigationController).viewControllers.first as! ContactsViewController
+        contactsTab.myNumber = myNumber
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -118,10 +121,8 @@ class ViewController: UIViewController {
             let vc = segue.destination as! ContactsViewController
             vc.canSelect = true
             vc.checked = checked
-        } else {
-            let vc = segue.destination as! ContactsViewController
-            vc.checked = checked
-        }
+            vc.myNumber = myNumber
+        } 
     }
 
 

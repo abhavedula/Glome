@@ -32,6 +32,8 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
     
     var ref: DatabaseReference!
     
+    var myNumber : String!
+    
     var contacts: [Contact] = []
     
     var checked: [Bool] = []
@@ -52,19 +54,20 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidAppear(animated)
        
         var i = 0
-        ref = Database.database().reference(withPath: "contacts")
+        ref = Database.database().reference(withPath: "users/" + myNumber + "/contacts")
         ref.observeSingleEvent(of: .value) { snapshot in
             let enumerator = snapshot.children
             while let rest = enumerator.nextObject() as? DataSnapshot {
                 if (i == 0) {
                     self.contacts = []
                 }
+                let dict: [String:Any] = rest.value! as! Dictionary
                 var name: String
-                name = (rest.value! as! Dictionary)["name"]!
+                name = dict["name"]! as! String
                 var lang: String
-                lang = (rest.value! as! Dictionary)["lang"]!
+                lang = dict["lang"]! as! String
                 var num: String
-                num = (rest.value! as! Dictionary)["number"]!
+                num = dict["number"]! as! String
                 let c =  Contact(mName: name, mLanguage: lang, mNumber: num)
                 self.contacts.append(c)
                 i = i + 1
@@ -79,6 +82,7 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+print(myNumber)
         if (canSelect) {
             addContactButton.isHidden = true
             addGroupButton.isHidden = true
@@ -105,22 +109,23 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
         if (!canSelect) {
-        ref = Database.database().reference(withPath: "contacts")
+        ref = Database.database().reference(withPath: "users/" + myNumber + "/contacts")
         ref.observeSingleEvent(of: .value) { snapshot in
             let enumerator = snapshot.children
             while let rest = enumerator.nextObject() as? DataSnapshot {
+                let dict: [String:Any] = rest.value! as! Dictionary
                 var name: String
-                name = (rest.value! as! Dictionary)["name"]!
+                name = dict["name"]! as! String
                 var lang: String
-                lang = (rest.value! as! Dictionary)["lang"]!
+                lang = dict["lang"]! as! String
                 var num: String
-                num = (rest.value! as! Dictionary)["number"]!
+                num = dict["number"]! as! String
                 let c =  Contact(mName: name, mLanguage: lang, mNumber: num)
                 self.contacts.append(c)
             }
             self.contactsTableView.reloadData()
             }
-            
+
         }
      
         

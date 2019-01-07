@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E89AE5F21E39AA900BF2156 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E89AE5E21E39AA900BF2156 /* LogInViewController.swift */; };
 		0EA4F09C21C5E8470079E2A4 /* Alamofire in Resources */ = {isa = PBXBuildFile; fileRef = 0EA4F09B21C5E8470079E2A4 /* Alamofire */; };
 		A506A3D820A619A3007CC984 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A506A3D720A619A3007CC984 /* MessageViewController.swift */; };
 		A50F3A12219BB9A1003A3056 /* NewContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50F3A11219BB9A1003A3056 /* NewContactViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0E89AE5E21E39AA900BF2156 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		0EA4F09B21C5E8470079E2A4 /* Alamofire */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Alamofire; path = ../Alamofire; sourceTree = "<group>"; };
 		2156DC282D1E5417E0D2D9B9 /* Pods_RefugeeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RefugeeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50FA433A6BFE547303081516 /* Pods-RefugeeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RefugeeApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RefugeeApp/Pods-RefugeeApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				A516D9E020B21581004708F9 /* ContactsViewController.swift */,
 				A54B308C2171212700500214 /* Contact.swift */,
 				A56AEF0920A4CD6F0062A79F /* Main.storyboard */,
+				0E89AE5E21E39AA900BF2156 /* LogInViewController.swift */,
 				A534AA77218EBBB3004A0287 /* ContactDetailViewController.swift */,
 				A56AEF0C20A4CD820062A79F /* Assets.xcassets */,
 				A56AEF0E20A4CD830062A79F /* LaunchScreen.storyboard */,
@@ -247,6 +250,7 @@
 				A516D9E120B21581004708F9 /* ContactsViewController.swift in Sources */,
 				A54B308D2171212700500214 /* Contact.swift in Sources */,
 				A506A3D820A619A3007CC984 /* MessageViewController.swift in Sources */,
+				0E89AE5F21E39AA900BF2156 /* LogInViewController.swift in Sources */,
 				A534AA78218EBBB3004A0287 /* ContactDetailViewController.swift in Sources */,
 				A50F3A12219BB9A1003A3056 /* NewContactViewController.swift in Sources */,
 				A56AEF0620A4CD6F0062A79F /* AppDelegate.swift in Sources */,
