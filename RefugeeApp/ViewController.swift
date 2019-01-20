@@ -96,6 +96,11 @@ class ViewController: UIViewController {
         
         var contactsTab = (self.tabBarController?.viewControllers![1] as! UINavigationController).viewControllers.first as! ContactsViewController
         contactsTab.myNumber = myNumber
+        
+        var groupsTab = (self.tabBarController?.viewControllers![2] as! UINavigationController).viewControllers.first as! GroupsViewController
+        groupsTab.myNumber = myNumber
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
     

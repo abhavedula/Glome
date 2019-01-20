@@ -18,10 +18,6 @@ class ContactsTableViewCell: UITableViewCell {
         super.layoutSubviews() // This is important, don't forget to call the super.layoutSubviews
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        self.accessoryType = selected ? .checkmark : .none
-    }
    
 }
 
@@ -44,10 +40,10 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var addContactButton: UIButton!
     @IBOutlet weak var addGroupButton: UIButton!
-    @IBOutlet weak var newGroupButton: UIButton!
     @IBOutlet weak var doneButton: UIButton!
     
     @IBAction func onAddNewContactPressed(_ sender: Any) {
+        // Set myNumber in prepare for segue method
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -82,7 +78,7 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-print(myNumber)
+
         if (canSelect) {
             addContactButton.isHidden = true
             addGroupButton.isHidden = true
@@ -92,7 +88,6 @@ print(myNumber)
         contacts = []
         addContactButton.layer.cornerRadius = 5
         addGroupButton.layer.cornerRadius = 5
-        newGroupButton.layer.cornerRadius = 5
         
         contactsTableView.delegate = self
         contactsTableView.dataSource = self
@@ -134,12 +129,55 @@ print(myNumber)
     
     
     @IBAction func onDonePressed(_ sender: Any) {
-        // Do the actual adding of people to group
+        // TODO
+
+        // Prompt user to choose a group to add people to
+        let alert = UIAlertController(title: "Group", message: "Choose group to add to", preferredStyle: .actionSheet)
+        // DB query to get all groups
+        ref = Database.database().reference(withPath: "users/" + myNumber + "/groups")
+        ref.observeSingleEvent(of: .value) { snapshot in
+            let enumerator = snapshot.children
+            while let rest = enumerator.nextObject() as? DataSnapshot {
+                let dict: [String:Any] = rest.value! as! Dictionary
+                var g: String
+                g = dict["name"]! as! String
+                alert.addAction(UIAlertAction(title: g, style: .default, handler: { (action) in
+                    //execute some code when this option is selected
+                    // Do the actual adding of people in groupChecked
+                    for i in 0..<self.contacts.count {
+                        if (self.groupChecked[i]) {
+                            let contactName = self.contacts[i].getName()
+                            self.ref = Database.database().reference(withPath: "users/" + self.myNumber + "/contacts/" + contactName + "/groups")
+                            self.ref.child(g).setValue(["name":g])
+                        }
+                    }
+                }))
+            }
+        }
+//        print("groups")
+//        print(groups)
+//        for g in groups {
+//            print("hello")
+//            alert.addAction(UIAlertAction(title: g, style: .default, handler: { (action) in
+//                //execute some code when this option is selected
+//                // Do the actual adding of people in groupChecked
+//                for i in 0..<self.contacts.count {
+//                    if (self.groupChecked[i]) {
+//                        let contactName = self.contacts[i].getName()
+//                        self.ref = Database.database().reference(withPath: "users/" + self.myNumber + "/contacts" + contactName + "/groups")
+//                        self.ref.child(g).setValue(["name":g])
+//                    }
+//                }
+//            }))
+//        }
+        
+        self.present(alert, animated: true, completion: nil)
+        
+        
         
         // Show/hide buttons
         addContactButton.isHidden = false
         addGroupButton.isHidden = false
-        newGroupButton.isHidden = false
         
         doneButton.isHidden = true
         
@@ -162,32 +200,9 @@ print(myNumber)
         
         addContactButton.isHidden = true
         addGroupButton.isHidden = true
-        newGroupButton.isHidden = true
         doneButton.isHidden = false
         
     }
-    
-
-    @IBAction func onNewGroupPressed(_ sender: Any) {
-        //1. Create the alert controller.
-        let alert = UIAlertController(title: "Group Name", message: "Enter group name", preferredStyle: .alert)
-        
-        //2. Add the text field. You can configure it however you need.
-        alert.addTextField { (textField) in
-            textField.text = "Group name"
-        }
-        
-        // 3. Grab the value from the text field, and print it when the user clicks OK.
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
-            let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
-            print("Text field: \(textField!.text)")
-            // Create the group in database
-        }))
-        
-        // 4. Present the alert.
-        self.present(alert, animated: true, completion: nil)
-    }
-    
   
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         // reset contacts data in main view controller
@@ -225,6 +240,7 @@ print(myNumber)
                 contactsTableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
             }
         }
+        
         return cell
     }
     
@@ -285,6 +301,10 @@ print(myNumber)
                 
             }
             
+        }
+        if (segue.identifier == "AddContactSegue") {
+            let vc = segue.destination as! NewContactViewController
+            vc.myNumber = myNumber
         }
     }
 

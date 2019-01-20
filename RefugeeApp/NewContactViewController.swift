@@ -16,6 +16,8 @@ class NewContactViewController: UIViewController {
     @IBOutlet weak var langField: UITextField!
     @IBOutlet weak var addButton: UIButton!
     
+    var myNumber: String!
+    
     var ref: DatabaseReference!
 
     override func viewDidLoad() {
@@ -31,7 +33,8 @@ class NewContactViewController: UIViewController {
         if (nameField.text == nil || numberField.text == nil || langField.text == nil) {
             // Ask user to fill all fields in
         } else {
-            ref = Database.database().reference(withPath: "contacts")
+            // TODO: FIX PATH!!!!!!!
+            ref = Database.database().reference(withPath: "users/" + self.myNumber + "/contacts")
             self.ref.child(nameField.text!).setValue(["name":nameField.text!,
                                                       "number":numberField.text!,
                                                       "lang":langField.text!])

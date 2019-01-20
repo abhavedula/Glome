@@ -123,7 +123,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3893.5999999999999" y="133.5832083958021"/>
+            <point key="canvasLocation" x="3617" y="134"/>
         </scene>
         <!--Contacts View Controller-->
         <scene sceneID="0dO-DS-rzP">
@@ -151,9 +151,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fSc-DZ-dus">
-                                                    <rect key="frame" x="305" y="11" width="30" height="43"/>
+                                                    <rect key="frame" x="306" y="11" width="30" height="43"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="30" id="fzl-uH-Jdt"/>
+                                                        <constraint firstAttribute="width" constant="30" id="6Fv-cl-cYj"/>
                                                     </constraints>
                                                     <state key="normal" title="&gt;"/>
                                                     <connections>
@@ -162,13 +162,13 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="FtI-yg-oAh" firstAttribute="leading" secondItem="5Js-aV-6YS" secondAttribute="leadingMargin" constant="15" id="6HH-CH-LkX"/>
-                                                <constraint firstItem="fSc-DZ-dus" firstAttribute="leading" secondItem="FtI-yg-oAh" secondAttribute="trailing" constant="38" id="GZI-aF-nRo"/>
-                                                <constraint firstItem="fSc-DZ-dus" firstAttribute="bottom" secondItem="5Js-aV-6YS" secondAttribute="bottomMargin" id="JtK-xv-ITJ"/>
-                                                <constraint firstItem="FtI-yg-oAh" firstAttribute="centerY" secondItem="5Js-aV-6YS" secondAttribute="centerY" id="dwB-jl-hjZ"/>
-                                                <constraint firstItem="FtI-yg-oAh" firstAttribute="top" secondItem="fSc-DZ-dus" secondAttribute="top" id="hLR-QN-JNj"/>
-                                                <constraint firstItem="FtI-yg-oAh" firstAttribute="top" secondItem="5Js-aV-6YS" secondAttribute="topMargin" id="meE-sL-05n"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="fSc-DZ-dus" secondAttribute="trailing" constant="25" id="zc5-8U-jSE"/>
+                                                <constraint firstItem="FtI-yg-oAh" firstAttribute="centerY" secondItem="5Js-aV-6YS" secondAttribute="centerY" id="5lK-eW-4mb"/>
+                                                <constraint firstItem="FtI-yg-oAh" firstAttribute="leading" secondItem="5Js-aV-6YS" secondAttribute="leadingMargin" constant="14" id="IKp-8x-0mV"/>
+                                                <constraint firstItem="fSc-DZ-dus" firstAttribute="leading" secondItem="FtI-yg-oAh" secondAttribute="trailing" constant="38" id="JfR-FO-xf5"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="fSc-DZ-dus" secondAttribute="trailing" constant="24" id="bP7-OK-8Qi"/>
+                                                <constraint firstItem="FtI-yg-oAh" firstAttribute="top" secondItem="fSc-DZ-dus" secondAttribute="top" id="f4y-V2-Y4S"/>
+                                                <constraint firstItem="FtI-yg-oAh" firstAttribute="top" secondItem="5Js-aV-6YS" secondAttribute="topMargin" id="iNz-uk-Dtw"/>
+                                                <constraint firstItem="fSc-DZ-dus" firstAttribute="bottom" secondItem="5Js-aV-6YS" secondAttribute="bottomMargin" id="qhc-rZ-ueM"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -178,34 +178,14 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WmA-IX-b4T">
-                                <rect key="frame" x="7" y="545" width="113" height="30"/>
+                                <rect key="frame" x="27" y="545" width="113" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="113" id="cH0-CW-Scy"/>
-                                    <constraint firstAttribute="height" constant="30" id="hB3-OZ-8MD"/>
-                                </constraints>
                                 <state key="normal" title="New Contact">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="onAddNewContactPressed:" destination="5Pb-Ok-ghq" eventType="touchUpInside" id="Lha-WD-yTC"/>
-                                    <segue destination="kGg-eN-W3X" kind="show" id="jDZ-eK-Hta"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vU9-yd-34w">
-                                <rect key="frame" x="265" y="545" width="104" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="104" id="KSw-vz-TfJ"/>
-                                    <constraint firstAttribute="width" constant="104" id="Mpk-Iw-ubP"/>
-                                    <constraint firstAttribute="height" constant="30" id="jRI-rf-bks"/>
-                                </constraints>
-                                <state key="normal" title="Add to Group">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="onAddGroupPressed:" destination="5Pb-Ok-ghq" eventType="touchUpInside" id="5f3-Xq-0LS"/>
-                                    <action selector="onAddNewContactPressed:" destination="5Pb-Ok-ghq" eventType="touchUpInside" id="Oql-Xf-b9W"/>
+                                    <segue destination="kGg-eN-W3X" kind="show" identifier="AddContactSegue" id="jDZ-eK-Hta"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xdk-kD-whg">
@@ -215,37 +195,34 @@
                                     <action selector="onDonePressed:" destination="5Pb-Ok-ghq" eventType="touchUpInside" id="N0A-n4-l9z"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yfy-CE-j0M">
-                                <rect key="frame" x="141" y="545" width="105" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vU9-yd-34w">
+                                <rect key="frame" x="237" y="545" width="104" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="105" id="881-6d-NLo"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="105" id="rPs-DG-fqL"/>
-                                    <constraint firstAttribute="height" constant="30" id="sq8-3G-ncO"/>
+                                    <constraint firstAttribute="width" constant="104" id="EA6-R0-DHO"/>
                                 </constraints>
-                                <state key="normal" title="New Group">
+                                <state key="normal" title="Add to Group">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="onNewGroupPressed:" destination="5Pb-Ok-ghq" eventType="touchUpInside" id="huP-7a-OwP"/>
+                                    <action selector="onAddGroupPressed:" destination="5Pb-Ok-ghq" eventType="touchUpInside" id="5f3-Xq-0LS"/>
+                                    <action selector="onAddNewContactPressed:" destination="5Pb-Ok-ghq" eventType="touchUpInside" id="Oql-Xf-b9W"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="xdk-kD-whg" firstAttribute="bottom" secondItem="dce-AA-wb4" secondAttribute="bottom" id="08Z-3R-tcZ"/>
-                            <constraint firstItem="Yfy-CE-j0M" firstAttribute="baseline" secondItem="vU9-yd-34w" secondAttribute="baseline" id="1w3-c2-F0c"/>
-                            <constraint firstItem="WmA-IX-b4T" firstAttribute="baseline" secondItem="Yfy-CE-j0M" secondAttribute="baseline" id="8FO-JF-90a"/>
-                            <constraint firstAttribute="trailing" secondItem="qpn-ga-ewt" secondAttribute="trailing" id="Mny-3B-6FF"/>
-                            <constraint firstItem="qpn-ga-ewt" firstAttribute="top" secondItem="TPf-Zz-WUC" secondAttribute="topMargin" constant="-9" id="P9k-vA-fQn"/>
-                            <constraint firstItem="dce-AA-wb4" firstAttribute="trailing" secondItem="vU9-yd-34w" secondAttribute="trailing" constant="6" id="Vqx-KQ-XLX"/>
-                            <constraint firstItem="Yfy-CE-j0M" firstAttribute="leading" secondItem="WmA-IX-b4T" secondAttribute="trailing" constant="21" id="Xi6-42-xNd"/>
-                            <constraint firstItem="vU9-yd-34w" firstAttribute="leading" secondItem="Yfy-CE-j0M" secondAttribute="trailing" constant="19" id="Zuh-R4-AuV"/>
-                            <constraint firstItem="WmA-IX-b4T" firstAttribute="leading" secondItem="dce-AA-wb4" secondAttribute="leading" constant="7" id="erx-zH-EPn"/>
-                            <constraint firstItem="qpn-ga-ewt" firstAttribute="centerX" secondItem="xdk-kD-whg" secondAttribute="centerX" id="ggY-jE-11g"/>
-                            <constraint firstItem="qpn-ga-ewt" firstAttribute="leading" secondItem="TPf-Zz-WUC" secondAttribute="leading" id="h3l-eD-3XQ"/>
-                            <constraint firstItem="xdk-kD-whg" firstAttribute="top" secondItem="Yfy-CE-j0M" secondAttribute="bottom" constant="13" id="id1-BM-ofo"/>
-                            <constraint firstItem="WmA-IX-b4T" firstAttribute="top" secondItem="qpn-ga-ewt" secondAttribute="bottom" constant="8" symbolic="YES" id="l4f-wf-Vw7"/>
+                            <constraint firstItem="dce-AA-wb4" firstAttribute="trailing" secondItem="vU9-yd-34w" secondAttribute="trailing" constant="34" id="AIy-HZ-eYK"/>
+                            <constraint firstItem="qpn-ga-ewt" firstAttribute="leading" secondItem="TPf-Zz-WUC" secondAttribute="leading" id="Nxu-31-Y45"/>
+                            <constraint firstItem="WmA-IX-b4T" firstAttribute="leading" secondItem="dce-AA-wb4" secondAttribute="leading" constant="27" id="Rhy-sn-PZd"/>
+                            <constraint firstItem="qpn-ga-ewt" firstAttribute="centerX" secondItem="xdk-kD-whg" secondAttribute="centerX" id="SaP-b1-UtS"/>
+                            <constraint firstItem="xdk-kD-whg" firstAttribute="bottom" secondItem="dce-AA-wb4" secondAttribute="bottom" id="XR6-6S-OYf"/>
+                            <constraint firstItem="WmA-IX-b4T" firstAttribute="baseline" secondItem="vU9-yd-34w" secondAttribute="baseline" id="abB-r6-RpN"/>
+                            <constraint firstAttribute="trailing" secondItem="qpn-ga-ewt" secondAttribute="trailing" id="f1m-ab-yaX"/>
+                            <constraint firstItem="xdk-kD-whg" firstAttribute="top" secondItem="qpn-ga-ewt" secondAttribute="bottom" constant="51" id="gki-il-vjp"/>
+                            <constraint firstItem="vU9-yd-34w" firstAttribute="leading" secondItem="WmA-IX-b4T" secondAttribute="trailing" constant="97" id="lOv-2p-wUG"/>
+                            <constraint firstItem="qpn-ga-ewt" firstAttribute="top" secondItem="TPf-Zz-WUC" secondAttribute="topMargin" constant="-9" id="tYM-Ye-Ekk"/>
+                            <constraint firstItem="WmA-IX-b4T" firstAttribute="top" secondItem="qpn-ga-ewt" secondAttribute="bottom" constant="8" symbolic="YES" id="tlF-cJ-gNv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dce-AA-wb4"/>
                     </view>
@@ -255,12 +232,11 @@
                         <outlet property="addGroupButton" destination="vU9-yd-34w" id="IG8-mj-jmC"/>
                         <outlet property="contactsTableView" destination="qpn-ga-ewt" id="h2f-LI-JCx"/>
                         <outlet property="doneButton" destination="xdk-kD-whg" id="DnV-Y4-bJs"/>
-                        <outlet property="newGroupButton" destination="Yfy-CE-j0M" id="i2d-Yp-OwO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e4n-k9-w0j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4156" y="899.10044977511257"/>
+            <point key="canvasLocation" x="4556" y="1012"/>
         </scene>
         <!--New Contact View Controller-->
         <scene sceneID="KMa-Gj-lKQ">
@@ -360,7 +336,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6q3-ax-7tl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3621.5999999999999" y="1618.7406296851575"/>
+            <point key="canvasLocation" x="3617" y="1730"/>
         </scene>
         <!--Message View Controller-->
         <scene sceneID="HNQ-Ui-j6L">
@@ -441,7 +417,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="59f-Dj-phN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4605.6000000000004" y="133.5832083958021"/>
+            <point key="canvasLocation" x="4417" y="134"/>
         </scene>
         <!--Message-->
         <scene sceneID="gWb-LH-lIV">
@@ -460,7 +436,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wuD-fa-awk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2954.4000000000001" y="133.5832083958021"/>
+            <point key="canvasLocation" x="2822" y="134"/>
         </scene>
         <!--Log In View Controller-->
         <scene sceneID="OcE-UC-cl5">
@@ -534,7 +510,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kk8-Yw-dmL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1249" y="400"/>
+            <point key="canvasLocation" x="1230" y="406"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="uZ9-k8-rrc">
@@ -549,6 +525,7 @@
                     <connections>
                         <segue destination="I8v-em-RKP" kind="relationship" relationship="viewControllers" id="2UN-Ci-uDz"/>
                         <segue destination="1JG-hj-6QP" kind="relationship" relationship="viewControllers" id="fjl-64-Vfo"/>
+                        <segue destination="bpS-89-DCZ" kind="relationship" relationship="viewControllers" id="z6A-4E-Zb7"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mTK-TJ-QtX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -625,7 +602,90 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eyW-fY-i6j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4916" y="911.69415292353835"/>
+            <point key="canvasLocation" x="5356" y="964.76761619190415"/>
+        </scene>
+        <!--Groups View Controller-->
+        <scene sceneID="6vd-qF-YMx">
+            <objects>
+                <viewController id="rpD-ta-u0a" customClass="GroupsViewController" customModule="RefugeeApp2" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="m8T-kR-9mv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cb5-Xq-yNj">
+                                <rect key="frame" x="0.0" y="64" width="375" height="469"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="groupCell" rowHeight="111" id="wP1-wm-he4" customClass="GroupsTableViewCell" customModule="RefugeeApp2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="111"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wP1-wm-he4" id="gho-W8-edh">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="110.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S25-4W-8Qa">
+                                                    <rect key="frame" x="15" y="18" width="305" height="74.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="S25-4W-8Qa" firstAttribute="top" secondItem="gho-W8-edh" secondAttribute="topMargin" constant="7" id="I5B-Co-Ile"/>
+                                                <constraint firstItem="S25-4W-8Qa" firstAttribute="leading" secondItem="gho-W8-edh" secondAttribute="leadingMargin" id="IQ2-xR-bBF"/>
+                                                <constraint firstItem="S25-4W-8Qa" firstAttribute="centerY" secondItem="gho-W8-edh" secondAttribute="centerY" id="Ns0-kT-FU0"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="S25-4W-8Qa" secondAttribute="trailing" constant="40" id="qlM-kE-QK7"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="groupNameLabel" destination="S25-4W-8Qa" id="WKC-zY-9fe"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y5D-3D-IFx">
+                                <rect key="frame" x="27" y="563" width="77" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="New Group">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onNewGroupPressed:" destination="rpD-ta-u0a" eventType="touchUpInside" id="cos-ki-WX7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xe4-Mb-W3A">
+                                <rect key="frame" x="241" y="563" width="92" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Add to Group">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Cb5-Xq-yNj" firstAttribute="top" secondItem="Qvn-Vd-OSp" secondAttribute="top" id="6WX-QS-Fit"/>
+                            <constraint firstItem="Cb5-Xq-yNj" firstAttribute="leading" secondItem="m8T-kR-9mv" secondAttribute="leading" id="7MI-33-UzT"/>
+                            <constraint firstItem="Qvn-Vd-OSp" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xe4-Mb-W3A" secondAttribute="trailing" id="SZn-A3-oFo"/>
+                            <constraint firstItem="y5D-3D-IFx" firstAttribute="baseline" secondItem="xe4-Mb-W3A" secondAttribute="baseline" id="Ux7-Wr-GxR"/>
+                            <constraint firstItem="y5D-3D-IFx" firstAttribute="leading" secondItem="Qvn-Vd-OSp" secondAttribute="leading" constant="27" id="XPU-bF-wTN"/>
+                            <constraint firstAttribute="trailing" secondItem="Cb5-Xq-yNj" secondAttribute="trailing" id="fXy-ju-3pc"/>
+                            <constraint firstItem="xe4-Mb-W3A" firstAttribute="leading" secondItem="y5D-3D-IFx" secondAttribute="trailing" constant="137" id="jG0-jt-Wzl"/>
+                            <constraint firstItem="Qvn-Vd-OSp" firstAttribute="bottom" secondItem="y5D-3D-IFx" secondAttribute="bottom" constant="25" id="kzc-mI-xAc"/>
+                            <constraint firstItem="y5D-3D-IFx" firstAttribute="top" secondItem="Cb5-Xq-yNj" secondAttribute="bottom" constant="30" id="sI4-GM-pLB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Qvn-Vd-OSp"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="VFN-oP-yfr"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="addGroupButton" destination="xe4-Mb-W3A" id="g2F-oC-1zv"/>
+                        <outlet property="groupsTableView" destination="Cb5-Xq-yNj" id="VqL-yo-nw3"/>
+                        <outlet property="newGroupButton" destination="y5D-3D-IFx" id="0Sx-uT-bkG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="owD-G6-mKV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2952.8000000000002" y="1012.4437781109445"/>
         </scene>
         <!--Contacts-->
         <scene sceneID="DpB-Qk-1j2">
@@ -644,11 +704,30 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vle-Oc-9P7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3216.8000000000002" y="899.10044977511257"/>
+            <point key="canvasLocation" x="3758" y="1012"/>
+        </scene>
+        <!--Groups-->
+        <scene sceneID="vyo-Yk-qXY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bpS-89-DCZ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Groups" id="4a4-ve-LIE"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TEf-U9-Iio">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="rpD-ta-u0a" kind="relationship" relationship="rootViewController" id="2Ie-mA-8YA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qDw-M8-9M2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2013.5999999999999" y="1012.4437781109445"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Cei-De-sIq"/>
+        <segue reference="naf-ML-mje"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
