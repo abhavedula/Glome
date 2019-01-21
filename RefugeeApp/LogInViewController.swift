@@ -24,9 +24,7 @@ class LogInViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-    
-    //TODO: SMALL BUG - NEED TO PRESS LOG IN TWICE
-    
+        
     @IBAction func onLogInPressed(_ sender: Any) {
         verifyPassword()
     }
@@ -36,15 +34,13 @@ class LogInViewController: UIViewController {
         ref.observeSingleEvent(of: .value) { snapshot in
             let enumerator = snapshot.children
             while let rest = enumerator.nextObject() as? DataSnapshot {
-                print(rest.value)
-                print(rest.key)
                 if (rest.key == self.numberField.text) {
                     let dict: [String:Any] = rest.value! as! Dictionary
                     var pwd: String
                     pwd = dict["password"]! as! String
                     self.pwdMatch = pwd == self.pwdField.text
-                    print(String(self.pwdMatch) + " hi")
                     if (self.pwdMatch) {
+                        self.performSegue(withIdentifier: "LogInSegue", sender: (Any).self)
                         break
                     }
                 }
@@ -54,7 +50,6 @@ class LogInViewController: UIViewController {
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        print(pwdMatch)
         return pwdMatch
     }
     

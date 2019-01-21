@@ -10,6 +10,7 @@
 		0E89AE5F21E39AA900BF2156 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E89AE5E21E39AA900BF2156 /* LogInViewController.swift */; };
 		0E8D28D921EB60730035D0F0 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8D28D821EB60730035D0F0 /* GroupsViewController.swift */; };
 		0EA4F09C21C5E8470079E2A4 /* Alamofire in Resources */ = {isa = PBXBuildFile; fileRef = 0EA4F09B21C5E8470079E2A4 /* Alamofire */; };
+		0ED4753A21F652A100ABFEF4 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED4753921F652A100ABFEF4 /* Group.swift */; };
 		A506A3D820A619A3007CC984 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A506A3D720A619A3007CC984 /* MessageViewController.swift */; };
 		A50F3A12219BB9A1003A3056 /* NewContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50F3A11219BB9A1003A3056 /* NewContactViewController.swift */; };
 		A51006AC213C3A6A00B6667B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A51006A4213C3A6900B6667B /* GoogleService-Info.plist */; };
@@ -41,6 +42,7 @@
 		0E89AE5E21E39AA900BF2156 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		0E8D28D821EB60730035D0F0 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		0EA4F09B21C5E8470079E2A4 /* Alamofire */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Alamofire; path = ../Alamofire; sourceTree = "<group>"; };
+		0ED4753921F652A100ABFEF4 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		2156DC282D1E5417E0D2D9B9 /* Pods_RefugeeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RefugeeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50FA433A6BFE547303081516 /* Pods-RefugeeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RefugeeApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RefugeeApp/Pods-RefugeeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A506A3D720A619A3007CC984 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				A506A3D720A619A3007CC984 /* MessageViewController.swift */,
 				A516D9E020B21581004708F9 /* ContactsViewController.swift */,
 				A54B308C2171212700500214 /* Contact.swift */,
+				0ED4753921F652A100ABFEF4 /* Group.swift */,
 				A56AEF0920A4CD6F0062A79F /* Main.storyboard */,
 				0E8D28D821EB60730035D0F0 /* GroupsViewController.swift */,
 				0E89AE5E21E39AA900BF2156 /* LogInViewController.swift */,
@@ -252,6 +255,7 @@
 				A56AEF0820A4CD6F0062A79F /* ViewController.swift in Sources */,
 				A516D9E120B21581004708F9 /* ContactsViewController.swift in Sources */,
 				A54B308D2171212700500214 /* Contact.swift in Sources */,
+				0ED4753A21F652A100ABFEF4 /* Group.swift in Sources */,
 				A506A3D820A619A3007CC984 /* MessageViewController.swift in Sources */,
 				0E89AE5F21E39AA900BF2156 /* LogInViewController.swift in Sources */,
 				A534AA78218EBBB3004A0287 /* ContactDetailViewController.swift in Sources */,

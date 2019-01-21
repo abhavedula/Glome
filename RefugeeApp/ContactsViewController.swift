@@ -129,8 +129,6 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     @IBAction func onDonePressed(_ sender: Any) {
-        // TODO
-
         // Prompt user to choose a group to add people to
         let alert = UIAlertController(title: "Group", message: "Choose group to add to", preferredStyle: .actionSheet)
         // DB query to get all groups
@@ -154,22 +152,6 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
                 }))
             }
         }
-//        print("groups")
-//        print(groups)
-//        for g in groups {
-//            print("hello")
-//            alert.addAction(UIAlertAction(title: g, style: .default, handler: { (action) in
-//                //execute some code when this option is selected
-//                // Do the actual adding of people in groupChecked
-//                for i in 0..<self.contacts.count {
-//                    if (self.groupChecked[i]) {
-//                        let contactName = self.contacts[i].getName()
-//                        self.ref = Database.database().reference(withPath: "users/" + self.myNumber + "/contacts" + contactName + "/groups")
-//                        self.ref.child(g).setValue(["name":g])
-//                    }
-//                }
-//            }))
-//        }
         
         self.present(alert, animated: true, completion: nil)
         

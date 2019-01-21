@@ -21,14 +21,15 @@ class GroupsTableViewCell: UITableViewCell {
 }
 
 class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    var canSelect: Bool = false
 
     var ref: DatabaseReference!
     
     var myNumber : String!
     
-    var groups: [String] = []
+    var groups: [Group] = []
+    
+    var checked: [Bool] = []
+    var canSelect: Bool = false
     
     @IBOutlet weak var groupsTableView: UITableView!
     
@@ -48,10 +49,9 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
             let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
             print("Text field: \(textField!.text)")
-            // TODO: Test adding the group in database
             self.ref = Database.database().reference(withPath: "users/" + self.myNumber + "/groups")
             self.ref.child(textField!.text!).setValue(["name":textField!.text])
-            self.groups.append(textField!.text!)
+            self.groups.append(Group(mName: textField!.text!))
             self.groupsTableView.reloadData()
         }))
         
@@ -73,10 +73,12 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 let dict: [String:Any] = rest.value! as! Dictionary
                 var name: String
                 name = dict["name"]! as! String
-                print(name)
-                self.groups.append(name)
-                print(self.groups)
+                let g = Group(mName: name)
+                self.groups.append(g)
                 i = i + 1
+                if (self.checked.count < i && self.canSelect) {
+                    self.checked.append(false)
+                }
             }
             self.groupsTableView.reloadData()
         }
@@ -94,7 +96,11 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         groupsTableView.delegate = self
         groupsTableView.dataSource = self
         
-        
+        if (canSelect) {
+            groupsTableView.allowsMultipleSelection = true
+            groupsTableView.allowsMultipleSelectionDuringEditing = true
+            groupsTableView.setEditing(true, animated: false)
+        }
 
         if (!canSelect) {
         ref = Database.database().reference(withPath: "users/" + myNumber + "/groups")
@@ -104,14 +110,14 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 let dict: [String:Any] = rest.value! as! Dictionary
                 var name: String
                 name = dict["name"]! as! String
-                print(name)
-                self.groups.append(name)
-                print(self.groups)
+                let g = Group(mName: name)
+                self.groups.append(g)
             }
             self.groupsTableView.reloadData()
         }
         }
         // Do any additional setup after loading the view.
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -120,11 +126,59 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = groupsTableView.dequeueReusableCell(withIdentifier: "groupCell") as! GroupsTableViewCell
-        cell.groupNameLabel?.text = groups[indexPath.row]
+        cell.groupNameLabel?.text = groups[indexPath.row].getName()
+        
+        if (checked.count > 0) {
+            if (checked[indexPath.row] && canSelect) {
+                cell.setSelected(checked[indexPath.row], animated: false)
+                groupsTableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+            }
+        }
         
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (canSelect) {
+            if (checked.count > 0) {
+                checked[indexPath.row] = !checked[indexPath.row]
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if (canSelect) {
+            if (checked.count > 0) {
+                checked[indexPath.row] = !checked[indexPath.row]
+            }
+        } 
+    }
+    
+    func getGroupMembers() {
+        ref = Database.database().reference(withPath: "users/" + myNumber + "/contacts")
+        ref.observeSingleEvent(of: .value) { snapshot in
+            let enumerator = snapshot.children
+            while let rest = enumerator.nextObject() as? DataSnapshot {
+                let dict: [String:Any] = rest.value! as! Dictionary
+                var name: String
+                name = dict["name"]! as! String
+                var lang: String
+                lang = dict["lang"]! as! String
+                var num: String
+                num = dict["number"]! as! String
+                let c =  Contact(mName: name, mLanguage: lang, mNumber: num)
+                let g: [String:Any] = dict["groups"]! as! Dictionary
+                for (k,_) in g {
+                    let idx = self.groups.index(where: { (item) -> Bool in
+                        item.getName() == k // test if this is the item you're looking for
+                    })
+                    self.groups[idx!].addMember(contact: c)
+                }
+
+            }
+            self.groupsTableView.reloadData()
+        }
+    }
     
 
     /*

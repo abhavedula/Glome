@@ -34,6 +34,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var addContactButton: UIButton!
     
     @IBAction func onAddContact(_ sender: Any) {
+
+        let alert = UIAlertController(title: "Add Recipients", message: "Do you want to add contacts or groups", preferredStyle: .actionSheet)
+       
+        alert.addAction(UIAlertAction(title: "Contacts", style: .default, handler: { (action) in
+            // Segue
+            self.performSegue(withIdentifier: "ChooseContactSegue", sender: (Any).self)
+
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Groups", style: .default, handler: { (action) in
+            self.performSegue(withIdentifier: "ChooseGroupSegue", sender: (Any).self)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     func getTranslation(lang: String) {
@@ -81,7 +95,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         getTranslation(lang: "French")
         getTranslation(lang: "Arabic")
-        print(translations)
         sendButton.layer.cornerRadius = 5
         chooseMsgButton.layer.cornerRadius = 5
         addContactButton.layer.cornerRadius = 5
@@ -127,7 +140,12 @@ class ViewController: UIViewController {
             vc.canSelect = true
             vc.checked = checked
             vc.myNumber = myNumber
-        } 
+        } else if (segue.identifier == "ChooseGroupSegue") {
+            let vc = segue.destination as! GroupsViewController
+            vc.canSelect = true
+            vc.checked = checked
+            vc.myNumber = myNumber
+        }
     }
 
 

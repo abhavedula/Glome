@@ -119,6 +119,7 @@
                         <outlet property="originalMessageField" destination="16O-aZ-5Hl" id="NGO-oV-UA9"/>
                         <outlet property="recipientField" destination="kjN-tO-mAH" id="D31-Zs-IvM"/>
                         <outlet property="sendButton" destination="EQ3-b3-1n4" id="un9-iN-9k6"/>
+                        <segue destination="rpD-ta-u0a" kind="show" identifier="ChooseGroupSegue" id="APM-3F-4Zy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -459,7 +460,7 @@
                                 <rect key="frame" x="117" y="235" width="217" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZcR-oa-gYQ">
                                 <rect key="frame" x="55" y="178" width="49" height="20"/>
@@ -623,7 +624,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="110.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S25-4W-8Qa">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S25-4W-8Qa">
                                                     <rect key="frame" x="15" y="18" width="305" height="74.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -727,7 +728,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="naf-ML-mje"/>
+        <segue reference="APM-3F-4Zy"/>
+        <segue reference="Cei-De-sIq"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
