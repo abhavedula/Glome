@@ -93,6 +93,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        originalMessageField.layer.cornerRadius = 5
+        messageField.layer.cornerRadius = 5
+
         getTranslation(lang: "French")
         getTranslation(lang: "Arabic")
         sendButton.layer.cornerRadius = 5

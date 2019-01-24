@@ -11,6 +11,8 @@
 		0E8D28D921EB60730035D0F0 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8D28D821EB60730035D0F0 /* GroupsViewController.swift */; };
 		0EA4F09C21C5E8470079E2A4 /* Alamofire in Resources */ = {isa = PBXBuildFile; fileRef = 0EA4F09B21C5E8470079E2A4 /* Alamofire */; };
 		0ED4753A21F652A100ABFEF4 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED4753921F652A100ABFEF4 /* Group.swift */; };
+		0ED4753C21F97B2200ABFEF4 /* glome_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED4753B21F97B2100ABFEF4 /* glome_logo.png */; };
+		0ED4754421F987BC00ABFEF4 /* Circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED4754321F987BB00ABFEF4 /* Circle.png */; };
 		A506A3D820A619A3007CC984 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A506A3D720A619A3007CC984 /* MessageViewController.swift */; };
 		A50F3A12219BB9A1003A3056 /* NewContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50F3A11219BB9A1003A3056 /* NewContactViewController.swift */; };
 		A51006AC213C3A6A00B6667B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A51006A4213C3A6900B6667B /* GoogleService-Info.plist */; };
@@ -43,6 +45,8 @@
 		0E8D28D821EB60730035D0F0 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		0EA4F09B21C5E8470079E2A4 /* Alamofire */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Alamofire; path = ../Alamofire; sourceTree = "<group>"; };
 		0ED4753921F652A100ABFEF4 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		0ED4753B21F97B2100ABFEF4 /* glome_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glome_logo.png; sourceTree = "<group>"; };
+		0ED4754321F987BB00ABFEF4 /* Circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Circle.png; sourceTree = "<group>"; };
 		2156DC282D1E5417E0D2D9B9 /* Pods_RefugeeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RefugeeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50FA433A6BFE547303081516 /* Pods-RefugeeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RefugeeApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RefugeeApp/Pods-RefugeeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A506A3D720A619A3007CC984 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +77,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0ED4753F21F9877A00ABFEF4 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				0ED4754321F987BB00ABFEF4 /* Circle.png */,
+				0ED4753B21F97B2100ABFEF4 /* glome_logo.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 		5A3986ECA7BC3C5D4035859D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +128,7 @@
 				A56AEF0520A4CD6F0062A79F /* AppDelegate.swift */,
 				A56AEF0720A4CD6F0062A79F /* ViewController.swift */,
 				A50F3A11219BB9A1003A3056 /* NewContactViewController.swift */,
+				0ED4753F21F9877A00ABFEF4 /* images */,
 				A506A3D720A619A3007CC984 /* MessageViewController.swift */,
 				A516D9E020B21581004708F9 /* ContactsViewController.swift */,
 				A54B308C2171212700500214 /* Contact.swift */,
@@ -193,8 +207,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EA4F09C21C5E8470079E2A4 /* Alamofire in Resources */,
+				0ED4754421F987BC00ABFEF4 /* Circle.png in Resources */,
 				A56AEF1020A4CD830062A79F /* LaunchScreen.storyboard in Resources */,
 				A51006AC213C3A6A00B6667B /* GoogleService-Info.plist in Resources */,
+				0ED4753C21F97B2200ABFEF4 /* glome_logo.png in Resources */,
 				A56AEF0D20A4CD820062A79F /* Assets.xcassets in Resources */,
 				A56AEF0B20A4CD6F0062A79F /* Main.storyboard in Resources */,
 			);

@@ -19,8 +19,13 @@ class LogInViewController: UIViewController {
     
     var pwdMatch: Bool = false
     
+    @IBOutlet weak var loginButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loginButton.layer.cornerRadius = 5
+
         
         // Do any additional setup after loading the view.
     }
