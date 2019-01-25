@@ -13,6 +13,13 @@
 		0ED4753A21F652A100ABFEF4 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED4753921F652A100ABFEF4 /* Group.swift */; };
 		0ED4753C21F97B2200ABFEF4 /* glome_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED4753B21F97B2100ABFEF4 /* glome_logo.png */; };
 		0ED4754421F987BC00ABFEF4 /* Circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED4754321F987BB00ABFEF4 /* Circle.png */; };
+		0ED4754621FABA3500ABFEF4 /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED4754521FABA3400ABFEF4 /* message.png */; };
+		0ED4754A21FABB3400ABFEF4 /* сontacts.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED4754921FABB3400ABFEF4 /* сontacts.png */; };
+		0ED4754C21FABB6100ABFEF4 /* groups.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED4754B21FABB6100ABFEF4 /* groups.png */; };
+		0ED4754E21FABB9F00ABFEF4 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED4754D21FABB9F00ABFEF4 /* plus.png */; };
+		0ED4755121FABE9400ABFEF4 /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED4754F21FABE9300ABFEF4 /* chat.png */; };
+		0ED4755221FABE9400ABFEF4 /* phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED4755021FABE9400ABFEF4 /* phone.png */; };
+		0ED4755421FAC05300ABFEF4 /* more.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED4755321FAC05200ABFEF4 /* more.png */; };
 		A506A3D820A619A3007CC984 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A506A3D720A619A3007CC984 /* MessageViewController.swift */; };
 		A50F3A12219BB9A1003A3056 /* NewContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50F3A11219BB9A1003A3056 /* NewContactViewController.swift */; };
 		A51006AC213C3A6A00B6667B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A51006A4213C3A6900B6667B /* GoogleService-Info.plist */; };
@@ -47,6 +54,13 @@
 		0ED4753921F652A100ABFEF4 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		0ED4753B21F97B2100ABFEF4 /* glome_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glome_logo.png; sourceTree = "<group>"; };
 		0ED4754321F987BB00ABFEF4 /* Circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Circle.png; sourceTree = "<group>"; };
+		0ED4754521FABA3400ABFEF4 /* message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message.png; sourceTree = "<group>"; };
+		0ED4754921FABB3400ABFEF4 /* сontacts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "сontacts.png"; sourceTree = "<group>"; };
+		0ED4754B21FABB6100ABFEF4 /* groups.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = groups.png; sourceTree = "<group>"; };
+		0ED4754D21FABB9F00ABFEF4 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
+		0ED4754F21FABE9300ABFEF4 /* chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat.png; sourceTree = "<group>"; };
+		0ED4755021FABE9400ABFEF4 /* phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phone.png; sourceTree = "<group>"; };
+		0ED4755321FAC05200ABFEF4 /* more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = more.png; sourceTree = "<group>"; };
 		2156DC282D1E5417E0D2D9B9 /* Pods_RefugeeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RefugeeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50FA433A6BFE547303081516 /* Pods-RefugeeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RefugeeApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RefugeeApp/Pods-RefugeeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A506A3D720A619A3007CC984 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +95,13 @@
 			isa = PBXGroup;
 			children = (
 				0ED4754321F987BB00ABFEF4 /* Circle.png */,
+				0ED4754921FABB3400ABFEF4 /* сontacts.png */,
+				0ED4754521FABA3400ABFEF4 /* message.png */,
+				0ED4754F21FABE9300ABFEF4 /* chat.png */,
+				0ED4755321FAC05200ABFEF4 /* more.png */,
+				0ED4755021FABE9400ABFEF4 /* phone.png */,
+				0ED4754B21FABB6100ABFEF4 /* groups.png */,
+				0ED4754D21FABB9F00ABFEF4 /* plus.png */,
 				0ED4753B21F97B2100ABFEF4 /* glome_logo.png */,
 			);
 			path = images;
@@ -207,12 +228,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EA4F09C21C5E8470079E2A4 /* Alamofire in Resources */,
+				0ED4754A21FABB3400ABFEF4 /* сontacts.png in Resources */,
 				0ED4754421F987BC00ABFEF4 /* Circle.png in Resources */,
 				A56AEF1020A4CD830062A79F /* LaunchScreen.storyboard in Resources */,
+				0ED4754621FABA3500ABFEF4 /* message.png in Resources */,
 				A51006AC213C3A6A00B6667B /* GoogleService-Info.plist in Resources */,
+				0ED4755221FABE9400ABFEF4 /* phone.png in Resources */,
 				0ED4753C21F97B2200ABFEF4 /* glome_logo.png in Resources */,
 				A56AEF0D20A4CD820062A79F /* Assets.xcassets in Resources */,
+				0ED4754E21FABB9F00ABFEF4 /* plus.png in Resources */,
 				A56AEF0B20A4CD6F0062A79F /* Main.storyboard in Resources */,
+				0ED4754C21FABB6100ABFEF4 /* groups.png in Resources */,
+				0ED4755421FAC05300ABFEF4 /* more.png in Resources */,
+				0ED4755121FABE9400ABFEF4 /* chat.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

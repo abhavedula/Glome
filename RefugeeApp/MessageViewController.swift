@@ -50,14 +50,10 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         
+        (viewController as? ViewController)?.originalMessageField.text = messages[selectedMessageIndex]
+        (viewController as? ViewController)?.message = messages[selectedMessageIndex]
+        (viewController as? ViewController)?.messageID = selectedMessageIndex
         
-        if (selectedMessageIndex == 5) {
-           (viewController as? ViewController)?.messageField.text = customMessageField.text
-        } else {
-            (viewController as? ViewController)?.originalMessageField.text = messages[selectedMessageIndex]
-            (viewController as? ViewController)?.message = messages[selectedMessageIndex]
-            (viewController as? ViewController)?.messageID = selectedMessageIndex
-        }
         
         (viewController as? ViewController)?.updateMessageTextField()
         

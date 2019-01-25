@@ -94,8 +94,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        originalMessageField.layer.cornerRadius = 5
-        messageField.layer.cornerRadius = 5
+        originalMessageField.layer.cornerRadius = 10
+        originalMessageField.clipsToBounds = true
+        messageField.layer.cornerRadius = 10
+        messageField.clipsToBounds = true
 
         getTranslation(lang: "French")
         getTranslation(lang: "Arabic")

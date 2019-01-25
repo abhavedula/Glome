@@ -95,7 +95,7 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
         navigationController?.delegate = self
         
         contactsTableView.rowHeight = UITableViewAutomaticDimension
-        contactsTableView.estimatedRowHeight = 100
+        contactsTableView.estimatedRowHeight = 400
         
         if (canSelect) {
             contactsTableView.allowsMultipleSelection = true
