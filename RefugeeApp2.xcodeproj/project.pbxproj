@@ -20,6 +20,7 @@
 		0ED4755121FABE9400ABFEF4 /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED4754F21FABE9300ABFEF4 /* chat.png */; };
 		0ED4755221FABE9400ABFEF4 /* phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED4755021FABE9400ABFEF4 /* phone.png */; };
 		0ED4755421FAC05300ABFEF4 /* more.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED4755321FAC05200ABFEF4 /* more.png */; };
+		0ED4755621FB8A8E00ABFEF4 /* GroupsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED4755521FB8A8E00ABFEF4 /* GroupsDetailViewController.swift */; };
 		A506A3D820A619A3007CC984 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A506A3D720A619A3007CC984 /* MessageViewController.swift */; };
 		A50F3A12219BB9A1003A3056 /* NewContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50F3A11219BB9A1003A3056 /* NewContactViewController.swift */; };
 		A51006AC213C3A6A00B6667B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A51006A4213C3A6900B6667B /* GoogleService-Info.plist */; };
@@ -61,6 +62,7 @@
 		0ED4754F21FABE9300ABFEF4 /* chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat.png; sourceTree = "<group>"; };
 		0ED4755021FABE9400ABFEF4 /* phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phone.png; sourceTree = "<group>"; };
 		0ED4755321FAC05200ABFEF4 /* more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = more.png; sourceTree = "<group>"; };
+		0ED4755521FB8A8E00ABFEF4 /* GroupsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsDetailViewController.swift; sourceTree = "<group>"; };
 		2156DC282D1E5417E0D2D9B9 /* Pods_RefugeeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RefugeeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50FA433A6BFE547303081516 /* Pods-RefugeeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RefugeeApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RefugeeApp/Pods-RefugeeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A506A3D720A619A3007CC984 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				0ED4753921F652A100ABFEF4 /* Group.swift */,
 				A56AEF0920A4CD6F0062A79F /* Main.storyboard */,
 				0E8D28D821EB60730035D0F0 /* GroupsViewController.swift */,
+				0ED4755521FB8A8E00ABFEF4 /* GroupsDetailViewController.swift */,
 				0E89AE5E21E39AA900BF2156 /* LogInViewController.swift */,
 				A534AA77218EBBB3004A0287 /* ContactDetailViewController.swift */,
 				A56AEF0C20A4CD820062A79F /* Assets.xcassets */,
@@ -298,6 +301,7 @@
 			files = (
 				A56AEF0820A4CD6F0062A79F /* ViewController.swift in Sources */,
 				A516D9E120B21581004708F9 /* ContactsViewController.swift in Sources */,
+				0ED4755621FB8A8E00ABFEF4 /* GroupsDetailViewController.swift in Sources */,
 				A54B308D2171212700500214 /* Contact.swift in Sources */,
 				0ED4753A21F652A100ABFEF4 /* Group.swift in Sources */,
 				A506A3D820A619A3007CC984 /* MessageViewController.swift in Sources */,

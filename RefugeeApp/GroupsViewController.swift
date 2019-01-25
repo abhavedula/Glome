@@ -21,7 +21,7 @@ class GroupsTableViewCell: UITableViewCell {
 }
 
 class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     var ref: DatabaseReference!
     
     var myNumber : String!
@@ -35,6 +35,7 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBOutlet weak var newGroupButton: UIButton!
     @IBOutlet weak var addGroupButton: UIButton!
+        
     
     @IBAction func onNewGroupPressed(_ sender: Any) {
         //1. Create the alert controller.
@@ -81,6 +82,7 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 }
             }
             self.groupsTableView.reloadData()
+            self.getGroupMembers()
         }
         
     }
@@ -114,6 +116,7 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.groups.append(g)
             }
             self.groupsTableView.reloadData()
+            self.getGroupMembers()
         }
         }
         // Do any additional setup after loading the view.
@@ -190,5 +193,24 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let destinationViewController = segue.destination as? GroupsDetailViewController {
+            if let button = sender as? UIButton {
+                let buttonPosition:CGPoint = button.convert(CGPoint.zero, to:self.groupsTableView)
+                let indexPath = self.groupsTableView.indexPathForRow(at: buttonPosition)
+                let r: Int = (indexPath?.row)!
+                destinationViewController.groupName = groups[r].getName()
+                var members : [Contact] = groups[r].getMembers()
+                let membersNames = members.map { $0.getName() }
+                destinationViewController.members = membersNames.joined(separator:", ")
+
+            }
+            
+        }
+    }
+
 
 }
