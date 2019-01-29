@@ -20,7 +20,7 @@ class GroupsTableViewCell: UITableViewCell {
     }
 }
 
-class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate {
     
     var ref: DatabaseReference!
     
@@ -98,6 +98,8 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         groupsTableView.delegate = self
         groupsTableView.dataSource = self
         
+        navigationController?.delegate = self
+
         if (canSelect) {
             groupsTableView.allowsMultipleSelection = true
             groupsTableView.allowsMultipleSelectionDuringEditing = true
@@ -116,7 +118,7 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.groups.append(g)
             }
             self.groupsTableView.reloadData()
-            self.getGroupMembers()
+            
         }
         }
         // Do any additional setup after loading the view.
@@ -183,6 +185,30 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        // reset contacts data in main view controller
+
+        (viewController as? ViewController)?.recipients = []
+        (viewController as? ViewController)?.recipientField.text? = ""
+        
+        print(groups.count)
+        
+        for (i, element) in checked.enumerated() {
+            if (element) {
+                for contact in groups[i].getMembers() {
+                    (viewController as? ViewController)?.recipients.append(contact)
+                    (viewController as? ViewController)?.recipientField.text?.append(contact.getName() + " ")
+                }
+            }
+        }
+        
+        
+        if ((viewController as? ViewController)?.message != "") {
+            (viewController as? ViewController)?.updateMessageTextField()
+        }
+        
+        (viewController as? ViewController)?.checkedGroups = checked        // Here you pass the to your original view controller
+    }
 
     /*
     // MARK: - Navigation
@@ -203,9 +229,10 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 let indexPath = self.groupsTableView.indexPathForRow(at: buttonPosition)
                 let r: Int = (indexPath?.row)!
                 destinationViewController.groupName = groups[r].getName()
-                var members : [Contact] = groups[r].getMembers()
-                let membersNames = members.map { $0.getName() }
-                destinationViewController.members = membersNames.joined(separator:", ")
+//                var members : [Contact] = groups[r].getMembers()
+//                let membersNames = members.map { $0.getName() }
+//                destinationViewController.members = membersNames.joined(separator:", ")
+                destinationViewController.members = groups[r].getMembers()
 
             }
             

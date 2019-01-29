@@ -140,13 +140,13 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
                 var g: String
                 g = dict["name"]! as! String
                 alert.addAction(UIAlertAction(title: g, style: .default, handler: { (action) in
-                    //execute some code when this option is selected
                     // Do the actual adding of people in groupChecked
                     for i in 0..<self.contacts.count {
                         if (self.groupChecked[i]) {
                             let contactName = self.contacts[i].getName()
                             self.ref = Database.database().reference(withPath: "users/" + self.myNumber + "/contacts/" + contactName + "/groups")
                             self.ref.child(g).setValue(["name":g])
+                            
                         }
                     }
                 }))
@@ -192,6 +192,8 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
         (viewController as? ViewController)?.recipients = []
         (viewController as? ViewController)?.recipientField.text? = ""
         
+        print(contacts.count)
+        
         for (i, element) in checked.enumerated() {
             if (element) {
                 (viewController as? ViewController)?.recipients.append(contacts[i])
@@ -204,7 +206,7 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
             (viewController as? ViewController)?.updateMessageTextField()
         }
         
-        (viewController as? ViewController)?.checked = checked        // Here you pass the to your original view controller
+        (viewController as? ViewController)?.checkedContacts = checked        // Here you pass the to your original view controller
     }
 
 
@@ -289,6 +291,8 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
             vc.myNumber = myNumber
         }
     }
+    
+    
 
     
 

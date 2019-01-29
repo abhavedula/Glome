@@ -8,24 +8,57 @@
 
 import UIKit
 
-class GroupsDetailViewController: UIViewController {
+
+
+class GroupsDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var groupNameLabel: UILabel!
-    @IBOutlet weak var membersLabel: UILabel!
+    
+    @IBOutlet weak var groupDetailTableView: UITableView!
+    
+    var members: [Contact] = []
     
     var groupName = ""
-    var members = ""
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         groupNameLabel.text = groupName
-        membersLabel.text = members
+        
+        groupDetailTableView.delegate = self
+        groupDetailTableView.dataSource = self
 
         // Do any additional setup after loading the view.
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return members.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = groupDetailTableView.dequeueReusableCell(withIdentifier: "groupMemberCell") as! GroupsDetailTableViewCell
+        cell.groupMemberLabel?.text = members[indexPath.row].getName()
+        return cell
+    }
+    
+
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let destinationViewController = segue.destination as? ContactDetailViewController {
+            if let button = sender as? UIButton {
+                let buttonPosition:CGPoint = button.convert(CGPoint.zero, to:self.groupDetailTableView)
+                let indexPath = self.groupDetailTableView.indexPathForRow(at: buttonPosition)
+                let r: Int = (indexPath?.row)!
+                destinationViewController.language = members[r].getLanguage()
+                destinationViewController.number = members[r].getNumber()
+                destinationViewController.name = members[r].getName()
+                
+            }
+            
+        }
+    }
 
     /*
     // MARK: - Navigation
@@ -37,4 +70,10 @@ class GroupsDetailViewController: UIViewController {
     }
     */
 
+}
+
+class GroupsDetailTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var groupMemberLabel: UILabel!
+    
 }

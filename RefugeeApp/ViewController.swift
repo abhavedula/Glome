@@ -22,7 +22,8 @@ class ViewController: UIViewController {
     
     var recipients: [Contact] = []
     
-    var checked: [Bool] = []
+    var checkedContacts: [Bool] = []
+    var checkedGroups: [Bool] = []
     
     var ref: DatabaseReference!
 
@@ -109,10 +110,17 @@ class ViewController: UIViewController {
         ref.observeSingleEvent(of: .value) { snapshot in
             let enumerator = snapshot.children
             while let rest = enumerator.nextObject() as? DataSnapshot {
-                self.checked.append(false)
+                self.checkedContacts.append(false)
             }
         }
         
+        ref = Database.database().reference(withPath: "users/" + myNumber + "/groups")
+        ref.observeSingleEvent(of: .value) { snapshot in
+            let enumerator = snapshot.children
+            while let rest = enumerator.nextObject() as? DataSnapshot {
+                self.checkedGroups.append(false)
+            }
+        }
         var contactsTab = (self.tabBarController?.viewControllers![1] as! UINavigationController).viewControllers.first as! ContactsViewController
         contactsTab.myNumber = myNumber
         
@@ -144,12 +152,12 @@ class ViewController: UIViewController {
         if (segue.identifier == "ChooseContactSegue") {
             let vc = segue.destination as! ContactsViewController
             vc.canSelect = true
-            vc.checked = checked
+            vc.checked = checkedContacts
             vc.myNumber = myNumber
         } else if (segue.identifier == "ChooseGroupSegue") {
             let vc = segue.destination as! GroupsViewController
             vc.canSelect = true
-            vc.checked = checked
+            vc.checked = checkedGroups
             vc.myNumber = myNumber
         }
     }
