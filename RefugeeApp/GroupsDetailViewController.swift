@@ -9,7 +9,6 @@
 import UIKit
 
 
-
 class GroupsDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var groupNameLabel: UILabel!

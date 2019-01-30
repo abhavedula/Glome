@@ -7,16 +7,25 @@
 //
 
 import UIKit
+import Foundation
+import FirebaseDatabase
 
 class ContactDetailViewController: UIViewController {
+    
+    var ref: DatabaseReference!
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var langLabel: UILabel!
+    @IBOutlet weak var groupsLabel: UILabel!
+    
     
     var name = ""
     var number = ""
     var language = ""
+    var groups : [String] = []
+    
+    var myNumber = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +34,24 @@ class ContactDetailViewController: UIViewController {
         nameLabel.text = name
         numberLabel.text = number
         langLabel.text = language
+        
+        // Get groups
+        getGroups()
+        
+        
     }
     
+    func getGroups() {
+        ref = Database.database().reference(withPath: "users/" + myNumber + "/contacts/" + name + "/groups")
+        ref.observeSingleEvent(of: .value) { snapshot in
+            let enumerator = snapshot.children
+            while let rest = enumerator.nextObject() as? DataSnapshot {
+                let dict: [String:String] = rest.value! as! Dictionary
+                self.groups.append(dict["name"]!)
+            }
+            self.groupsLabel.text = self.groups.joined(separator:", ")
+        }
+    }
 
     /*
     // MARK: - Navigation

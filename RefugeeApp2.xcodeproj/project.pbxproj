@@ -10,6 +10,7 @@
 		0E89AE5F21E39AA900BF2156 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E89AE5E21E39AA900BF2156 /* LogInViewController.swift */; };
 		0E8D28D921EB60730035D0F0 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8D28D821EB60730035D0F0 /* GroupsViewController.swift */; };
 		0EA4F09C21C5E8470079E2A4 /* Alamofire in Resources */ = {isa = PBXBuildFile; fileRef = 0EA4F09B21C5E8470079E2A4 /* Alamofire */; };
+		0EC9442D22016910003AC699 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC9442C22016910003AC699 /* CreateAccountViewController.swift */; };
 		0ED4753A21F652A100ABFEF4 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED4753921F652A100ABFEF4 /* Group.swift */; };
 		0ED4753C21F97B2200ABFEF4 /* glome_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED4753B21F97B2100ABFEF4 /* glome_logo.png */; };
 		0ED4754421F987BC00ABFEF4 /* Circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED4754321F987BB00ABFEF4 /* Circle.png */; };
@@ -52,6 +53,7 @@
 		0E89AE5E21E39AA900BF2156 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		0E8D28D821EB60730035D0F0 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		0EA4F09B21C5E8470079E2A4 /* Alamofire */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Alamofire; path = ../Alamofire; sourceTree = "<group>"; };
+		0EC9442C22016910003AC699 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		0ED4753921F652A100ABFEF4 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		0ED4753B21F97B2100ABFEF4 /* glome_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glome_logo.png; sourceTree = "<group>"; };
 		0ED4754321F987BB00ABFEF4 /* Circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Circle.png; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				A54B308C2171212700500214 /* Contact.swift */,
 				0ED4753921F652A100ABFEF4 /* Group.swift */,
 				A56AEF0920A4CD6F0062A79F /* Main.storyboard */,
+				0EC9442C22016910003AC699 /* CreateAccountViewController.swift */,
 				0E8D28D821EB60730035D0F0 /* GroupsViewController.swift */,
 				0ED4755521FB8A8E00ABFEF4 /* GroupsDetailViewController.swift */,
 				0E89AE5E21E39AA900BF2156 /* LogInViewController.swift */,
@@ -299,6 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EC9442D22016910003AC699 /* CreateAccountViewController.swift in Sources */,
 				A56AEF0820A4CD6F0062A79F /* ViewController.swift in Sources */,
 				A516D9E120B21581004708F9 /* ContactsViewController.swift in Sources */,
 				0ED4755621FB8A8E00ABFEF4 /* GroupsDetailViewController.swift in Sources */,

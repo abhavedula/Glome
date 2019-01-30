@@ -192,7 +192,10 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         (viewController as? ViewController)?.recipientField.text? = ""
         
         print(groups.count)
-        
+        while (groups.count == 0) {
+            
+        }
+        // TODO: Fix index out of range error!!!!!
         for (i, element) in checked.enumerated() {
             if (element) {
                 for contact in groups[i].getMembers() {

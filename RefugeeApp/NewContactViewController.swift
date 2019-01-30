@@ -30,14 +30,22 @@ class NewContactViewController: UIViewController {
     
 
     @IBAction func onAddContactPressed(_ sender: Any) {
-        if (nameField.text == nil || numberField.text == nil || langField.text == nil) {
+        if (nameField.text == "" || numberField.text == "" || langField.text == "") {
             // Ask user to fill all fields in
+            let alert = UIAlertController(title: "Please fill out all fields", message: "", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { [weak alert] (_) in
+                
+            }))
+            
+            self.present(alert, animated: true, completion: nil)
+            
         } else {
-            // TODO: FIX PATH!!!!!!!
             ref = Database.database().reference(withPath: "users/" + self.myNumber + "/contacts")
             self.ref.child(nameField.text!).setValue(["name":nameField.text!,
                                                       "number":numberField.text!,
-                                                      "lang":langField.text!])
+                                                      "lang":langField.text!,
+                                                      "groups":nil])
         }
         navigationController?.popViewController(animated: true)
         

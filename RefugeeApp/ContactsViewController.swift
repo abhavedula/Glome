@@ -88,6 +88,7 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
         contacts = []
         addContactButton.layer.cornerRadius = 5
         addGroupButton.layer.cornerRadius = 5
+        doneButton.layer.cornerRadius = 5
         
         contactsTableView.delegate = self
         contactsTableView.dataSource = self
@@ -196,6 +197,8 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
         
         for (i, element) in checked.enumerated() {
             if (element) {
+                print("in for loop")
+                print(contacts.count)
                 (viewController as? ViewController)?.recipients.append(contacts[i])
                 (viewController as? ViewController)?.recipientField.text?.append(contacts[i].getName() + " ")
             }
@@ -282,6 +285,7 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
                 destinationViewController.language = contacts[r].getLanguage()
                 destinationViewController.number = contacts[r].getNumber()
                 destinationViewController.name = contacts[r].getName()
+                destinationViewController.myNumber = myNumber
                 
             }
             

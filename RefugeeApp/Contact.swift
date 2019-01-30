@@ -13,7 +13,7 @@ class Contact: NSObject {
     private var name: String;
     private var language: String
     private var number: String
-    private var groups: [Group]
+    private var groups: [String]
     
     init(mName: String, mLanguage: String, mNumber: String) {
         name = mName
@@ -22,7 +22,7 @@ class Contact: NSObject {
         groups = []
     }
     
-    func addToGroup(group: Group) {
+    func addToGroup(group: String) {
         groups.append(group)
     }
     
@@ -38,7 +38,7 @@ class Contact: NSObject {
         return number
     }
     
-    func getGroups() -> [Group] {
+    func getGroups() -> [String] {
         return groups
     }
     
