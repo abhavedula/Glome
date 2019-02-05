@@ -190,20 +190,32 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         // reset contacts data in main view controller
       
-        (viewController as? ViewController)?.recipients = []
+        (viewController as? ViewController)?.recipientsContacts = []
         (viewController as? ViewController)?.recipientField.text? = ""
         
-        print(contacts.count)
-        
+        var numChecked = checked.filter{$0 == true}.count
+
         for (i, element) in checked.enumerated() {
             if (element) {
-                print("in for loop")
-                print(contacts.count)
-                (viewController as? ViewController)?.recipients.append(contacts[i])
-                (viewController as? ViewController)?.recipientField.text?.append(contacts[i].getName() + " ")
+                numChecked = numChecked - 1
+                (viewController as? ViewController)?.recipientsContacts.append(contacts[i])
+                (viewController as? ViewController)?.recipientField.text?.append(contacts[i].getName())
+                if (numChecked > 0) {
+                    (viewController as? ViewController)?.recipientField.text?.append(", ")
+                }
             }
         }
         
+//        for contact in ((viewController as? ViewController)?.recipientsGroups) ?? [] {
+//            (viewController as? ViewController)?.recipientField.text?.append(contact.getName() + " ")
+//        }
+        
+        let members : [Contact] = ((viewController as? ViewController)?.recipientsGroups) ?? []
+        if (members.count > 0 && numChecked > 0) {
+            (viewController as? ViewController)?.recipientField.text?.append(", ")
+        }
+        let membersNames = members.map { $0.getName() }
+        (viewController as? ViewController)?.recipientField.text?.append(membersNames.joined(separator:", "))
         
         if ((viewController as? ViewController)?.message != "") {
             (viewController as? ViewController)?.updateMessageTextField()

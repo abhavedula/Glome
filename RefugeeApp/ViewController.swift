@@ -20,7 +20,8 @@ class ViewController: UIViewController {
     
     var translations = Dictionary<String, [String]>()
     
-    var recipients: [Contact] = []
+    var recipientsContacts: [Contact] = []
+    var recipientsGroups: [Contact] = []
     
     var checkedContacts: [Bool] = []
     var checkedGroups: [Bool] = []
@@ -77,12 +78,25 @@ class ViewController: UIViewController {
         let url = "https://api.twilio.com/2010-04-01/Accounts/\(accountSID)/Messages"
         
         
-        for i in 0...recipients.count-1 {
+        for i in 0...recipientsContacts.count-1 {
             var m: String = message
             
-            m = translations[recipients[i].getLanguage()]![messageID]
-            let parameters = ["From": "+17344283890", "To": recipients[i].getNumber(), "Body": m]
+            m = translations[recipientsContacts[i].getLanguage()]![messageID]
+            let parameters = ["From": "+17344283890", "To": recipientsContacts[i].getNumber(), "Body": m]
 
+            Alamofire.request(url, method: .post, parameters: parameters)
+                .authenticate(user: accountSID, password: authToken)
+                .responseString { response in
+                    debugPrint(response)
+            }
+        }
+        
+        for i in 0...recipientsGroups.count-1 {
+            var m: String = message
+            
+            m = translations[recipientsContacts[i].getLanguage()]![messageID]
+            let parameters = ["From": "+17344283890", "To": recipientsGroups[i].getNumber(), "Body": m]
+            
             Alamofire.request(url, method: .post, parameters: parameters)
                 .authenticate(user: accountSID, password: authToken)
                 .responseString { response in
@@ -133,10 +147,18 @@ class ViewController: UIViewController {
     
     func updateMessageTextField() {
         messageField.text! = ""
-        if (recipients.count > 0) {
-            for i in 0...recipients.count-1 {
+        if (recipientsContacts.count > 0) {
+            for i in 0...recipientsContacts.count-1 {
                 var m = message
-                m = translations[recipients[i].getLanguage()]![messageID]
+                m = translations[recipientsContacts[i].getLanguage()]![messageID]
+                messageField.text!.append(m + "\n")
+            }
+        }
+        
+        if (recipientsGroups.count > 0) {
+            for i in 0...recipientsGroups.count-1 {
+                var m = message
+                m = translations[recipientsGroups[i].getLanguage()]![messageID]
                 messageField.text!.append(m + "\n")
             }
         }

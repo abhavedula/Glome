@@ -107,19 +107,18 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
 
         if (!canSelect) {
-        ref = Database.database().reference(withPath: "users/" + myNumber + "/groups")
-        ref.observeSingleEvent(of: .value) { snapshot in
-            let enumerator = snapshot.children
-            while let rest = enumerator.nextObject() as? DataSnapshot {
-                let dict: [String:Any] = rest.value! as! Dictionary
-                var name: String
-                name = dict["name"]! as! String
-                let g = Group(mName: name)
-                self.groups.append(g)
+            ref = Database.database().reference(withPath: "users/" + myNumber + "/groups")
+            ref.observeSingleEvent(of: .value) { snapshot in
+                let enumerator = snapshot.children
+                while let rest = enumerator.nextObject() as? DataSnapshot {
+                    let dict: [String:Any] = rest.value! as! Dictionary
+                    var name: String
+                    name = dict["name"]! as! String
+                    let g = Group(mName: name)
+                    self.groups.append(g)
+                }
+                self.groupsTableView.reloadData()
             }
-            self.groupsTableView.reloadData()
-            
-        }
         }
         // Do any additional setup after loading the view.
         
@@ -188,20 +187,36 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         // reset contacts data in main view controller
 
-        (viewController as? ViewController)?.recipients = []
+        (viewController as? ViewController)?.recipientsGroups = []
         (viewController as? ViewController)?.recipientField.text? = ""
-        
-        print(groups.count)
        
-        // TODO: Fix index out of range error!!!!!
-        for (i, element) in checked.enumerated() {
-            if (element) {
-                for contact in groups[i].getMembers() {
-                    (viewController as? ViewController)?.recipients.append(contact)
-                    (viewController as? ViewController)?.recipientField.text?.append(contact.getName() + " ")
+        var numChecked = checked.filter{$0 == true}.count
+        
+        if (groups.count > 0) {
+            for (i, element) in checked.enumerated() {
+                if (element) {
+                    let members : [Contact] = groups[i].getMembers()
+                    (viewController as? ViewController)?.recipientsGroups += members
+                    let membersNames = members.map { $0.getName() }
+                    (viewController as? ViewController)?.recipientField.text?.append(membersNames.joined(separator:", "))
+//                    for contact in groups[i].getMembers() {
+//                        (viewController as? ViewController)?.recipientsGroups.append(contact)
+//                        (viewController as? ViewController)?.recipientField.text?.append(contact.getName() + " ")
+//                    }
                 }
             }
         }
+        
+//        for contact in ((viewController as? ViewController)?.recipientsContacts) ?? [] {
+//            (viewController as? ViewController)?.recipientField.text?.append(contact.getName() + " ")
+//        }
+        
+        let members : [Contact] = ((viewController as? ViewController)?.recipientsContacts) ?? []
+        let membersNames = members.map { $0.getName() }
+        if (members.count > 0 && numChecked > 0) {
+            (viewController as? ViewController)?.recipientField.text?.append(", ")
+        }
+        (viewController as? ViewController)?.recipientField.text?.append(membersNames.joined(separator:", "))
         
         
         if ((viewController as? ViewController)?.message != "") {
@@ -242,3 +257,4 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
 
 }
+
