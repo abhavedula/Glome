@@ -210,6 +210,7 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
 //            (viewController as? ViewController)?.recipientField.text?.append(contact.getName() + " ")
 //        }
         
+        numChecked = checked.filter{$0 == true}.count
         let members : [Contact] = ((viewController as? ViewController)?.recipientsGroups) ?? []
         if (members.count > 0 && numChecked > 0) {
             (viewController as? ViewController)?.recipientField.text?.append(", ")

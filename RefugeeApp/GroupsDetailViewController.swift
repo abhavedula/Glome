@@ -18,6 +18,8 @@ class GroupsDetailViewController: UIViewController, UITableViewDelegate, UITable
     var members: [Contact] = []
     
     var groupName = ""
+    
+    var myNumber = ""
 
     
     override func viewDidLoad() {
@@ -53,6 +55,7 @@ class GroupsDetailViewController: UIViewController, UITableViewDelegate, UITable
                 destinationViewController.language = members[r].getLanguage()
                 destinationViewController.number = members[r].getNumber()
                 destinationViewController.name = members[r].getName()
+                destinationViewController.myNumber = myNumber
                 
             }
             

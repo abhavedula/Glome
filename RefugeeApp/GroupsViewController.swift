@@ -249,6 +249,7 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
 //                let membersNames = members.map { $0.getName() }
 //                destinationViewController.members = membersNames.joined(separator:", ")
                 destinationViewController.members = groups[r].getMembers()
+                destinationViewController.myNumber = myNumber
 
             }
             
