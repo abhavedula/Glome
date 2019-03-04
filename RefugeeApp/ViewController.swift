@@ -60,12 +60,14 @@ class ViewController: UIViewController {
         ref.observeSingleEvent(of: .value) { snapshot in
             let enumerator = snapshot.children
             while let rest = enumerator.nextObject() as? DataSnapshot {
-                var m : String = (rest.value! as! Dictionary)[lang]!
-                if (self.translations[lang] != nil) {
-                    self.translations[lang]!.append(m)
-                } else {
-                    self.translations[lang] = []
-                    self.translations[lang]!.append(m)
+                var m : String? = (rest.value! as! Dictionary)[lang]
+                if (m != nil) {
+                    if (self.translations[lang] != nil) {
+                        self.translations[lang]!.append(m!)
+                    } else {
+                        self.translations[lang] = []
+                        self.translations[lang]!.append(m!)
+                    }
                 }
             }
         }
@@ -114,8 +116,10 @@ class ViewController: UIViewController {
         messageField.layer.cornerRadius = 10
         messageField.clipsToBounds = true
 
-        getTranslation(lang: "French")
-        getTranslation(lang: "Arabic")
+        let langs = Language.allCases
+        for lang in langs {
+            getTranslation(lang: lang.rawValue)
+        }
         sendButton.layer.cornerRadius = 5
         chooseMsgButton.layer.cornerRadius = 5
         addContactButton.layer.cornerRadius = 5
