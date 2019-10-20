@@ -20,11 +20,11 @@ class CreateAccountViewController: UIViewController {
     
     @IBOutlet weak var submitButton: UIButton!
     
-    var myNumber: String = "+123456789"
-    
     var ref: DatabaseReference!
     
     @IBOutlet weak var errorField: UILabel!
+    
+    var myNumber: String = "+123456789"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,13 +35,34 @@ class CreateAccountViewController: UIViewController {
     }
 
     func addUserToDB(number: String) {
-        
         ref = Database.database().reference(withPath: "users")
         ref.child(number).setValue(["agency": agencyField.text,
                                     "contacts": nil,
                                     "email": emailField.text,
                                     "groups": nil,
                                     "password": pwdField.text?.sha256()])
+    }
+    
+    func getNewNumber() {
+        ref = Database.database().reference(withPath: "numbers")
+        ref.observeSingleEvent(of: .value) { snapshot in
+            let enumerator = snapshot.children
+            if let rest = enumerator.nextObject() as? DataSnapshot {
+                let dict: [String:Any] = rest.value! as! Dictionary
+                self.myNumber = dict["number"]! as! String
+                self.ref.child(self.myNumber).removeValue()
+                
+                // add to database
+                self.addUserToDB(number: self.myNumber)
+                
+                // segue
+                self.performSegue(withIdentifier: "CreateLoginSegue", sender: (Any).self)
+            }
+        }
+        
+       
+        
+        
     }
     
 
@@ -56,20 +77,11 @@ class CreateAccountViewController: UIViewController {
             return
         }
         // get phone number from twilio
+        getNewNumber()
+
         
-        // add to database
-        addUserToDB(number: myNumber)
-        
-        // segue
-        self.performSegue(withIdentifier: "CreateLoginSegue", sender: (Any).self)
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "CreateLoginSegue") {
-            let vc = ((segue.destination as! UITabBarController).viewControllers![0] as! UINavigationController).viewControllers.first as! ViewController
-            vc.myNumber = myNumber
-        }
-    }
 
 }

@@ -29,6 +29,7 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
     var ref: DatabaseReference!
     
     var myNumber : String!
+    @IBOutlet weak var myNumberLabel: UILabel!
     
     var contacts: [Contact] = []
     
@@ -43,12 +44,11 @@ class ContactsViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var doneButton: UIButton!
     
     @IBAction func onAddNewContactPressed(_ sender: Any) {
-        // Set myNumber in prepare for segue method
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-       
+        myNumberLabel.text = "My number: " + myNumber
         var i = 0
         ref = Database.database().reference(withPath: "users/" + myNumber + "/contacts")
         ref.observeSingleEvent(of: .value) { snapshot in

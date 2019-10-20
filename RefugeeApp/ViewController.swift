@@ -79,30 +79,36 @@ class ViewController: UIViewController {
 
         let url = "https://api.twilio.com/2010-04-01/Accounts/\(accountSID)/Messages"
         
-        
-        for i in 0...recipientsContacts.count-1 {
-            var m: String = message
-            
-            m = translations[recipientsContacts[i].getLanguage()]![messageID]
-            let parameters = ["From": "+17344283890", "To": recipientsContacts[i].getNumber(), "Body": m]
+        // TODO: change from phone number
+        if (recipientsContacts.count > 0) {
+            for i in 0...recipientsContacts.count-1 {
+                var m: String = message
+                
+                m = translations[recipientsContacts[i].getLanguage()]![messageID]
+                m = m + "\n" + translations["English"]![messageID]
+                let parameters = ["From": "+12063509104", "To": recipientsContacts[i].getNumber(), "Body": m]
 
-            Alamofire.request(url, method: .post, parameters: parameters)
-                .authenticate(user: accountSID, password: authToken)
-                .responseString { response in
-                    debugPrint(response)
+                Alamofire.request(url, method: .post, parameters: parameters)
+                    .authenticate(user: accountSID, password: authToken)
+                    .responseString { response in
+                        debugPrint(response)
+                }
             }
         }
         
-        for i in 0...recipientsGroups.count-1 {
-            var m: String = message
-            
-            m = translations[recipientsContacts[i].getLanguage()]![messageID]
-            let parameters = ["From": "+17344283890", "To": recipientsGroups[i].getNumber(), "Body": m]
-            
-            Alamofire.request(url, method: .post, parameters: parameters)
-                .authenticate(user: accountSID, password: authToken)
-                .responseString { response in
-                    debugPrint(response)
+        if (recipientsGroups.count > 0) {
+            for i in 0...recipientsGroups.count-1 {
+                var m: String = message
+                
+                m = translations[recipientsContacts[i].getLanguage()]![messageID]
+                m = m + "\n" + translations["English"]![messageID]
+                let parameters = ["From": "+12063509104", "To": recipientsGroups[i].getNumber(), "Body": m]
+                
+                Alamofire.request(url, method: .post, parameters: parameters)
+                    .authenticate(user: accountSID, password: authToken)
+                    .responseString { response in
+                        debugPrint(response)
+                }
             }
         }
         
