@@ -171,15 +171,14 @@ class GroupsViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 var num: String
                 num = dict["number"]! as! String
                 let c =  Contact(mName: name, mLanguage: lang, mNumber: num)
-                //TODO: bug here causing groups to crash
-                let g: [String:Any] = dict["groups"]! as! Dictionary
-                for (k,_) in g {
-                    let idx = self.groups.index(where: { (item) -> Bool in
-                        item.getName() == k // test if this is the item you're looking for
-                    })
-                    self.groups[idx!].addMember(contact: c)
+                if let g: [String:Any] = dict["groups"] as? Dictionary {
+                    for (k,_) in g {
+                        let idx = self.groups.index(where: { (item) -> Bool in
+                            item.getName() == k // test if this is the item you're looking for
+                        })
+                        self.groups[idx!].addMember(contact: c)
+                    }
                 }
-
             }
             self.groupsTableView.reloadData()
         }

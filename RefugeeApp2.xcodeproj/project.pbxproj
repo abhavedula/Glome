@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E20E50823CEE96B0032CF02 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E20E50723CEE96B0032CF02 /* ConversationViewController.swift */; };
 		0E872305222DB4A700E2D94C /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E872304222DB4A700E2D94C /* Language.swift */; };
 		0E89AE5F21E39AA900BF2156 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E89AE5E21E39AA900BF2156 /* LogInViewController.swift */; };
 		0E8D28D921EB60730035D0F0 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8D28D821EB60730035D0F0 /* GroupsViewController.swift */; };
@@ -53,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		09D002106BB6E2E96593E002 /* Pods_RefugeeApp2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RefugeeApp2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E20E50723CEE96B0032CF02 /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		0E872304222DB4A700E2D94C /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		0E89AE5E21E39AA900BF2156 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		0E8D28D821EB60730035D0F0 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				0ED4753921F652A100ABFEF4 /* Group.swift */,
 				A56AEF0920A4CD6F0062A79F /* Main.storyboard */,
 				0EC9442C22016910003AC699 /* CreateAccountViewController.swift */,
+				0E20E50723CEE96B0032CF02 /* ConversationViewController.swift */,
 				0E8D28D821EB60730035D0F0 /* GroupsViewController.swift */,
 				0ED4755521FB8A8E00ABFEF4 /* GroupsDetailViewController.swift */,
 				0E89AE5E21E39AA900BF2156 /* LogInViewController.swift */,
@@ -317,6 +320,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E20E50823CEE96B0032CF02 /* ConversationViewController.swift in Sources */,
 				0EC9442D22016910003AC699 /* CreateAccountViewController.swift in Sources */,
 				A56AEF0820A4CD6F0062A79F /* ViewController.swift in Sources */,
 				A516D9E120B21581004708F9 /* ContactsViewController.swift in Sources */,

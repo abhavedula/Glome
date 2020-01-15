@@ -19,6 +19,7 @@ class ContactDetailViewController: UIViewController {
     @IBOutlet weak var langLabel: UILabel!
     @IBOutlet weak var groupsLabel: UILabel!
     
+    @IBOutlet weak var viewConversationButton: UIButton!
     
     var name = ""
     var number = ""
@@ -29,6 +30,8 @@ class ContactDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewConversationButton.layer.cornerRadius = 5
 
         // Do any additional setup after loading the view.
         nameLabel.text = name
@@ -62,5 +65,15 @@ class ContactDetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+  
+        if (segue.identifier == "ConversationSegue") {
+            let vc = segue.destination as! ConversationViewController
+            vc.myNumber = myNumber
+            vc.recipientNumber = number
+            vc.recipientName = name
+        }
+    }
 
 }
