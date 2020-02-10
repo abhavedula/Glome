@@ -1,0 +1,24 @@
+{
+  "name": "glome",
+  "version": "1.0.0",
+  "description": "GLOME is the first app platform specifically geared towards improving resettlement agencies’ operations. It integrates mass texting and language translation platforms, automated reminders/appointment communications, and links and Google map directories to numerous resources for refugees. GLOME’s key value proposition is in accelerating the communication process so that each agency can handle more refugee clients per month and each client can become self-sufficient in a much shorter time frame.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhavedula/Glome.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abhavedula/Glome/issues"
+  },
+  "homepage": "https://github.com/abhavedula/Glome#readme",
+  "dependencies": {
+    "bower": "^1.8.8",
+    "firebase": "^7.8.1",
+    "js-sha256": "^0.9.0"
+  }
+}

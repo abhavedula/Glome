@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Upload Contacts</title>
+        <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Cormorant|Roboto:100" rel="stylesheet">
+        <link href="style.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script></head>
+
+
+       <form id="loginForm" method="post">
+          <h1>Log in</h1>
+          <p id="error"></p>
+          <label>Email: </label>
+          <input id="email" name="email" value=""><br>
+          <label>Password: </label>
+          <input id="password" name="password" type="password" value=""><br><br>
+          <input id="login" name="login" type="submit" value="Log in">
+        </form>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="login.js"></script>
+
+    </body>
+</html>

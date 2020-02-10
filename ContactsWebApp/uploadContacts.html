@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Upload Contacts</title>
+        <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Cormorant|Roboto:100" rel="stylesheet">
+        <link href="style.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js"></script>
+
+        <script>
+
+            var ExcelToJSON = function() {
+
+                this.parseExcel = function(file) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        var data = e.target.result;
+                        var workbook = XLSX.read(data, {
+                            type: 'binary'
+                        });
+                        workbook.SheetNames.forEach(function(sheetName) {
+                             // Here is your object
+                            var XL_row_object = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
+                            var json_object = JSON.stringify(XL_row_object);
+                            $('#contact').val(json_object);
+                            var data = JSON.parse(json_object);
+                            var html = "<tr><th>Name</th><th>Number</th><th>Language</th></tr>";
+                            for (var i = 0; i < data.length; i++){
+                                html +="<tr>"+
+                                    "<td>"+ data[i]["Name"] + "</td>"+
+                                    "<td>"+ data[i]["Number"] + "</td>"+
+                                    "<td>"+ data[i]["Language"] + "</tr>";
+                            }
+                            $("#contactsTable").html(html);
+
+                        })
+                    };
+
+                    reader.onerror = function(ex) {
+                        console.log(ex);
+                    };
+
+                    reader.readAsBinaryString(file);
+                };
+            };
+
+        function handleFileSelect(evt) {
+            var files = evt.target.files; // FileList object
+            var xl2json = new ExcelToJSON();
+            xl2json.parseExcel(files[0]);
+          }
+     
+        </script>
+
+        <div id="container">
+            <h1> Upload Contacts Spreadsheet </h1>
+            <h4> Upload an Excel Spreadsheet with contact information in the following format: </h4>
+            <img src="example.png"><br><br>
+            <form enctype="multipart/form-data">
+                <input id="upload" type=file  name="files[]">
+            </form>
+            <br>
+
+
+            <table id="contactsTable">
+              
+            </table>
+
+
+            <script>
+                document.getElementById('upload').addEventListener('change', handleFileSelect, false);
+            </script>
+            <br><br>
+            <form id="newUserForm">
+                <input id="contact" name="contact" type="hidden" value="">
+                <input id="saveContacts" name="saveContacts" type="submit" value="Save Contacts">
+            </form>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="uploadContacts.js"></script>
+
+    </body>
+</html>
