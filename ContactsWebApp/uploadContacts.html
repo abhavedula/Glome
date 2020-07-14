@@ -3,10 +3,19 @@
     <head>
         <title>Upload Contacts</title>
         <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Cormorant|Roboto:100" rel="stylesheet">
         <link href="style.css" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+                
     </head>
     <body>
+        <img src="logofinal.png" height="100">
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js"></script>
@@ -29,7 +38,7 @@
                             var json_object = JSON.stringify(XL_row_object);
                             $('#contact').val(json_object);
                             var data = JSON.parse(json_object);
-                            var html = "<tr><th>Name</th><th>Number</th><th>Language</th></tr>";
+                            var html = "<br><tr><th>Name</th><th>Number</th><th>Language</th></tr>";
                             for (var i = 0; i < data.length; i++){
                                 html +="<tr>"+
                                     "<td>"+ data[i]["Name"] + "</td>"+
@@ -47,6 +56,8 @@
 
                     reader.readAsBinaryString(file);
                 };
+                document.getElementById("newUserForm").setAttribute("style", "");
+
             };
 
         function handleFileSelect(evt) {
@@ -56,32 +67,74 @@
           }
      
         </script>
-
-        <div id="container">
-            <h1> Upload Contacts Spreadsheet </h1>
-            <h4> Upload an Excel Spreadsheet with contact information in the following format: </h4>
-            <img src="example.png"><br><br>
-            <form enctype="multipart/form-data">
-                <input id="upload" type=file  name="files[]">
-            </form>
+        <center>
+        <div id="upload_contacts">
             <br>
+            <center>
+            <h1 id="upload_contacts_title"> Uploading Contacts <br> Spreadsheet to Your Device. </h1>
+            <h4 id="upload_contacts_subtitle"> Upload an excel spreadsheet with your contacts information in the <br>following format. </h4>
+
+            
+            <div id="upload_contacts_2">
+
+            <br><br>
+
+            <div id="upload_contacts_div">
+            <form id="upload_form" style="visibility: hidden" enctype="multipart/form-data"><input id="upload" type=file  name="files[]"></form>
+            </div>
+
+            <div id="replace">
+            <table class="centered">
+            <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Number</th>
+                  <th>Language</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>Person 1</td>
+                <td>Phone Number 1</td>
+                <td>Language 1</td>
+              </tr>
+              <tr>
+                <td>Person 2</td>
+                <td>Phone Number 2</td>
+                <td>Language 2</td>
+              </tr>
+              <tr>
+                <td>Person 3</td>
+                <td>Phone Number 3</td>
+                <td>Language 3</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <br>
+          <button id="next" onclick="next()">Next > </button>
+        </div>
+
+        <form id="newUserForm" style="visibility: hidden"><input id="contact" name="contact" type="hidden" value=""><input id="saveContacts" name="saveContacts" type="submit" value="Save Contacts"></form>
+
+          <script>
+            function next() {
+              document.getElementById("replace").innerHTML = '<br><table id="contactsTable"></table><br><br>';
+              document.getElementById("upload_form").setAttribute("style", "");
+            }
+          </script>
 
 
-            <table id="contactsTable">
-              
-            </table>
-
-
+            
             <script>
                 document.getElementById('upload').addEventListener('change', handleFileSelect, false);
             </script>
-            <br><br>
-            <form id="newUserForm">
-                <input id="contact" name="contact" type="hidden" value="">
-                <input id="saveContacts" name="saveContacts" type="submit" value="Save Contacts">
-            </form>
+            </div>
+            <center>
+            <br>
         </div>
-
+        </center>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="uploadContacts.js"></script>
 

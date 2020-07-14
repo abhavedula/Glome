@@ -1,0 +1,141 @@
+#login_graphic {
+	background-color: #96d1e2;
+}
+
+#email {
+  border-radius: 20px;
+  background: #ededed;
+  width: 300px;
+}
+
+#password {
+  border-radius: 20px;
+  background: #ededed;
+  width: 300px;
+}
+
+#login_title {
+  color: grey;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+#login {
+  border-radius: 20px;
+  background: #202f5b;
+  width: 300px;
+  height: 40px;
+  color: white;
+}
+
+#slogan {
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+input:focus {
+  border-bottom: 1px solid #202f5b !important;
+  box-shadow: 0 1px 0 0 #202f5b !important;
+}
+
+#upload_contacts {
+  background-color: #dff3fb;
+  border-radius: 25px;
+  width: 1000px;
+  height: 500px
+}
+
+#upload_contacts_title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  color: #202f5b;
+  font-size: 45px;
+}
+
+#upload_contacts_subtitle {
+  font-family: 'Montserrat', sans-serif;
+  color: #a0a7ba;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+#upload_contacts_2 {
+  background-color: white;
+  border-radius: 25px;
+  width: 800px;
+  height: 400px;
+  display: inline-block;
+  margin: 0 23px;
+  box-shadow: 5px 5px 5px 1px #e3e3e3;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+
+th {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  color: #202f5b;
+}
+
+td {
+  font-family: 'Montserrat', sans-serif;
+  color: #a0a7ba;
+  font-weight: 600;
+}
+
+#success {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 45px;
+}
+
+#success_message {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #202f5b;
+}
+
+#next {
+  color: #96d1e2;
+  float: right;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  border: none;
+}
+
+#next:hover {
+  background-color: white;
+}
+
+#next:active {
+  background-color: white;
+}
+
+::-webkit-file-upload-button {
+  background: #96d1e2;
+  color: white;
+  border-radius: 15px;
+  border: none;
+  height: 35px;
+  width: 140px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+#upload_contacts_div {
+  float: left;
+}
+
+#saveContacts {
+  background: #f9ba74;
+  color: white;
+  border-radius: 15px;
+  border: none;
+  height: 35px;
+  width: 140px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  float: left;
+}

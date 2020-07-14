@@ -43,7 +43,7 @@ $('#loginForm').on('submit', function(e){
 
             document.cookie = "number=" + accounts[i]["number"];
             window.location.replace("uploadContacts.html");
-
+            localStorage["number"] = accounts[i]["number"];
             return;
         }
 
