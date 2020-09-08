@@ -75,7 +75,7 @@ class ViewController: UIViewController {
     
     @IBAction func onPressSend(_ sender: Any) {
         let accountSID = "ACfd625c80670237064ee9dae1fc445844"
-        let authToken = "d558044c31f041db628941ac481d838c"
+        let authToken = "1a9254dd1c1b2fc645eda19e37b7720b"
 
         let url = "https://api.twilio.com/2010-04-01/Accounts/\(accountSID)/Messages"
         
@@ -86,7 +86,7 @@ class ViewController: UIViewController {
                 
                 m = translations[recipientsContacts[i].getLanguage()]![messageID]
                 m = m + "\n" + translations["English"]![messageID]
-                let parameters = ["From": "+12063509104", "To": recipientsContacts[i].getNumber(), "Body": m]
+                let parameters = ["From": "+12159996310", "To": recipientsContacts[i].getNumber(), "Body": m]
 
                 Alamofire.request(url, method: .post, parameters: parameters)
                     .authenticate(user: accountSID, password: authToken)

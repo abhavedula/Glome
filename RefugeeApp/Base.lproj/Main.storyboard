@@ -60,7 +60,7 @@
                                     <segue destination="5Pb-Ok-ghq" kind="show" identifier="ChooseContactSegue" id="Cei-De-sIq"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16O-aZ-5Hl">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16O-aZ-5Hl">
                                 <rect key="frame" x="16" y="157" width="343" height="0.0"/>
                                 <color key="backgroundColor" red="0.52837812900000003" green="0.71172744040000002" blue="0.79609268899999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -81,7 +81,7 @@
                                     <action selector="onPressSend:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0df-Yz-I9D"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmb-Zf-6So">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmb-Zf-6So">
                                 <rect key="frame" x="16" y="187" width="343" height="189"/>
                                 <color key="backgroundColor" red="0.52837812900000003" green="0.71172744040000002" blue="0.79609268899999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -931,6 +931,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.2272710204" green="0.37741345170000001" blue="0.4941334128" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" red="0.22727102041244507" green="0.37741345167160034" blue="0.49413341283798218" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="0jh-ZS-XfX" firstAttribute="bottom" secondItem="Blu-4m-3J8" secondAttribute="bottom" constant="48" id="3e9-XF-qFi"/>
                             <constraint firstItem="0jh-ZS-XfX" firstAttribute="trailing" secondItem="eyH-Of-MvP" secondAttribute="trailing" constant="155" id="3oz-So-oJB"/>
@@ -985,30 +986,10 @@
                     <view key="view" contentMode="scaleToFill" id="TW3-5F-BZT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hk7-c5-2M0">
-                                <rect key="frame" x="0.0" y="65" width="375" height="65"/>
-                                <color key="backgroundColor" red="0.52837812900000003" green="0.71172744040000002" blue="0.79609268899999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="65" id="tNe-2e-T7T"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" red="0.2272710204" green="0.37741345170000001" blue="0.4941334128" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Hk7-c5-2M0" secondAttribute="trailing" id="I1l-dh-atG"/>
-                            <constraint firstItem="E9X-96-hzF" firstAttribute="bottom" secondItem="Hk7-c5-2M0" secondAttribute="bottom" constant="488" id="Uyh-vI-0k7"/>
-                            <constraint firstItem="Hk7-c5-2M0" firstAttribute="top" secondItem="E9X-96-hzF" secondAttribute="top" constant="1" id="cpi-Is-YJN"/>
-                            <constraint firstItem="Hk7-c5-2M0" firstAttribute="leading" secondItem="TW3-5F-BZT" secondAttribute="leading" id="fkc-Zo-eLn"/>
-                        </constraints>
+                        <color key="tintColor" red="0.52837812900543213" green="0.71172744035720825" blue="0.796092689037323" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="E9X-96-hzF"/>
                     </view>
-                    <connections>
-                        <outlet property="nameLabel" destination="Hk7-c5-2M0" id="15e-4W-Ooa"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nJD-nH-VG0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

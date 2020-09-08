@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0E20E50823CEE96B0032CF02 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E20E50723CEE96B0032CF02 /* ConversationViewController.swift */; };
+		0E5D21B325071C7B007D58AF /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5D21B225071C7B007D58AF /* Message.swift */; };
 		0E872305222DB4A700E2D94C /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E872304222DB4A700E2D94C /* Language.swift */; };
 		0E89AE5F21E39AA900BF2156 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E89AE5E21E39AA900BF2156 /* LogInViewController.swift */; };
 		0E8D28D921EB60730035D0F0 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8D28D821EB60730035D0F0 /* GroupsViewController.swift */; };
@@ -55,6 +56,7 @@
 /* Begin PBXFileReference section */
 		09D002106BB6E2E96593E002 /* Pods_RefugeeApp2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RefugeeApp2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E20E50723CEE96B0032CF02 /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
+		0E5D21B225071C7B007D58AF /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		0E872304222DB4A700E2D94C /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		0E89AE5E21E39AA900BF2156 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		0E8D28D821EB60730035D0F0 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				A506A3D720A619A3007CC984 /* MessageViewController.swift */,
 				A516D9E020B21581004708F9 /* ContactsViewController.swift */,
 				0E872304222DB4A700E2D94C /* Language.swift */,
+				0E5D21B225071C7B007D58AF /* Message.swift */,
 				A54B308C2171212700500214 /* Contact.swift */,
 				0ED4753921F652A100ABFEF4 /* Group.swift */,
 				A56AEF0920A4CD6F0062A79F /* Main.storyboard */,
@@ -332,6 +335,7 @@
 				0E872305222DB4A700E2D94C /* Language.swift in Sources */,
 				A534AA78218EBBB3004A0287 /* ContactDetailViewController.swift in Sources */,
 				A50F3A12219BB9A1003A3056 /* NewContactViewController.swift in Sources */,
+				0E5D21B325071C7B007D58AF /* Message.swift in Sources */,
 				A56AEF0620A4CD6F0062A79F /* AppDelegate.swift in Sources */,
 				0E8D28D921EB60730035D0F0 /* GroupsViewController.swift in Sources */,
 			);
